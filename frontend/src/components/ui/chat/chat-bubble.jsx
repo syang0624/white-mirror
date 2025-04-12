@@ -23,7 +23,7 @@ const chatBubbleVariant = cva(
       variant: "received",
       layout: "default",
     },
-  },
+  }
 );
 
 const ChatBubble = React.forwardRef(
@@ -31,7 +31,7 @@ const ChatBubble = React.forwardRef(
     <div
       className={cn(
         chatBubbleVariant({ variant, layout, className }),
-        "relative group",
+        "relative group"
       )}
       ref={ref}
       {...props}
@@ -42,19 +42,15 @@ const ChatBubble = React.forwardRef(
               variant,
               layout,
             })
-          : child,
+          : child
       )}
     </div>
-  ),
+  )
 );
 ChatBubble.displayName = "ChatBubble";
 
 // ChatBubbleAvatar
-const ChatBubbleAvatar = ({
-  src,
-  fallback,
-  className,
-}) => (
+const ChatBubbleAvatar = ({ src, fallback, className }) => (
   <Avatar className={className}>
     <AvatarImage src={src} alt="Avatar" />
     <AvatarFallback>{fallback}</AvatarFallback>
@@ -66,8 +62,8 @@ const chatBubbleMessageVariants = cva("p-4", {
   variants: {
     variant: {
       received:
-        "bg-secondary text-secondary-foreground rounded-r-lg rounded-tl-lg",
-      sent: "bg-primary text-primary-foreground rounded-l-lg rounded-tr-lg",
+        "bg-gray-200 text-secondary-foreground rounded-r-lg rounded-tl-lg",
+      sent: "bg-gray-950 text-primary-foreground rounded-l-lg rounded-tr-lg",
     },
     layout: {
       default: "",
@@ -83,12 +79,12 @@ const chatBubbleMessageVariants = cva("p-4", {
 const ChatBubbleMessage = React.forwardRef(
   (
     { className, variant, layout, isLoading = false, children, ...props },
-    ref,
+    ref
   ) => (
     <div
       className={cn(
         chatBubbleMessageVariants({ variant, layout, className }),
-        "break-words max-w-full whitespace-pre-wrap",
+        "break-words max-w-full whitespace-pre-wrap"
       )}
       ref={ref}
       {...props}
@@ -101,16 +97,12 @@ const ChatBubbleMessage = React.forwardRef(
         children
       )}
     </div>
-  ),
+  )
 );
 ChatBubbleMessage.displayName = "ChatBubbleMessage";
 
 // ChatBubbleTimestamp
-const ChatBubbleTimestamp = ({
-  timestamp,
-  className,
-  ...props
-}) => (
+const ChatBubbleTimestamp = ({ timestamp, className, ...props }) => (
   <div className={cn("text-xs mt-2 text-right", className)} {...props}>
     {timestamp}
   </div>
@@ -145,7 +137,7 @@ const ChatBubbleActionWrapper = React.forwardRef(
         variant === "sent"
           ? "-left-1 -translate-x-full flex-row-reverse"
           : "-right-1 translate-x-full",
-        className,
+        className
       )}
       {...props}
     >
