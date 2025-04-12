@@ -102,7 +102,8 @@ function Auth() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 className="block w-full rounded-md border-0 py-3 pl-2 pr-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="••••••••"
+                                // placeholder="••••••••"
+                                placeholder="Super secure password here!"
                             />
                             <button
                                 type="button"
