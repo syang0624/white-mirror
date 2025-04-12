@@ -60,6 +60,7 @@ const Dashboard = () => {
             }))
           );
           setStatistics(response.response);
+          console.log("Fetched all statistics:", response.response);
         } else {
           setError(response.message || "Failed to fetch statistics");
         }
@@ -180,20 +181,31 @@ const Dashboard = () => {
   const timelineData = useMemo(() => {
     if (!timelineMessages.length) return [];
 
-    // Group messages by date
-    const messagesByDate = timelineMessages.reduce((acc, message) => {
-      const date = message.timestamp.split("T")[0];
-      if (!acc[date]) {
-        acc[date] = { date, count: 0, techniques: {} };
+    // Group messages by hour
+    const messagesByHour = timelineMessages.reduce((acc, message) => {
+      // Parse the timestamp to get date and hour
+      const timestamp = new Date(message.timestamp);
+      const dateStr = timestamp.toISOString().split("T")[0];
+      const hour = timestamp.getHours();
+      const timeKey = `${dateStr} ${hour}:00`;
+
+      if (!acc[timeKey]) {
+        acc[timeKey] = {
+          time: timeKey,
+          dateObj: timestamp, // Store the date object for sorting
+          count: 0,
+          techniques: {},
+        };
       }
-      acc[date].count += 1;
+
+      acc[timeKey].count += 1;
 
       if (message.techniques) {
         message.techniques.forEach((technique) => {
-          if (!acc[date].techniques[technique]) {
-            acc[date].techniques[technique] = 0;
+          if (!acc[timeKey].techniques[technique]) {
+            acc[timeKey].techniques[technique] = 0;
           }
-          acc[date].techniques[technique] += 1;
+          acc[timeKey].techniques[technique] += 1;
         });
       }
 
@@ -206,15 +218,23 @@ const Dashboard = () => {
     );
 
     // Prepare data for line chart
-    return Object.values(messagesByDate)
-      .map((day) => {
-        const result = { date: day.date };
+    return Object.values(messagesByHour)
+      .map((hourData) => {
+        const result = {
+          time: hourData.time,
+          // Format as "MM/DD HH:00" for better readability
+          formattedTime: `${
+            hourData.dateObj.getMonth() + 1
+          }/${hourData.dateObj.getDate()} ${hourData.dateObj.getHours()}:00`,
+        };
+
         uniqueTechniques.forEach((technique) => {
-          result[technique] = day.techniques[technique] || 0;
+          result[technique] = hourData.techniques[technique] || 0;
         });
+
         return result;
       })
-      .sort((a, b) => a.date.localeCompare(b.date));
+      .sort((a, b) => new Date(a.time) - new Date(b.time));
   }, [timelineMessages]);
 
   // Calculate aggregated statistics for "All Users" view
@@ -356,6 +376,10 @@ const Dashboard = () => {
           <OverviewPanel
             aggregatedStats={aggregatedStats}
             getColor={getColor}
+            allUserStats={
+              selectedUserId === "all" ? statistics?.statistics : null
+            }
+            isAllView={selectedUserId === "all"}
           />
         )}
 
