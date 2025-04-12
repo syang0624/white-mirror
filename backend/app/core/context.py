@@ -11,12 +11,18 @@ from contextlib import asynccontextmanager
 from app.core.env import Env
 from app.db.postgres import ConnParams, Postgres
 from app.core.websocket import ConnectionManager
+from app.service.classification.classifier import ManipulativeMessageClassifier
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_PATH = BASE_DIR / "service" / "classification" / "manipulative_classifier.pkl"
 
 @dataclass
 class Context:
     http_client: httpx.AsyncClient
     db_workspace: Postgres
     ws_manager: ConnectionManager
+    classifier: ManipulativeMessageClassifier
 
 class State(TypedDict):
     context: Context
@@ -38,6 +44,10 @@ def get_http_client(request: Request):
 def get_ws_manager(request: Request):
     ctx = get_ctx_from_request(request)
     return ctx.ws_manager
+
+def get_classifier(request: Request):
+    ctx = get_ctx_from_request(request)
+    return ctx.classifier
 
 # Functions to access global context
 def get_global_context() -> Optional[Context]:
@@ -78,6 +88,9 @@ async def lifespan(
 
     ws_manager = ConnectionManager()
 
+    classifier = ManipulativeMessageClassifier()
+    classifier.load_model(str(MODEL_PATH))
+
     async with Postgres.init(**db_params) as db_workspace:
         aiohttp_session = aiohttp.ClientSession(
             auto_decompress=True,
@@ -106,7 +119,8 @@ async def lifespan(
             ctx = Context(
                 http_client=http_client,
                 db_workspace=db_workspace,
-                ws_manager=ws_manager
+                ws_manager=ws_manager,
+                classifier=classifier
             )
             
             # Set global context
