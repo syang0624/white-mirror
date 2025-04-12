@@ -41,5 +41,3 @@ async def get_async_session() -> AsyncGenerator[AsyncSession, Any]:
         finally:
             await session.close()
 
-
-Base: Any = declarative_base()
