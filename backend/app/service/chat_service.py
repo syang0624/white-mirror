@@ -6,6 +6,7 @@ from sqlalchemy import select, or_, and_
 
 from app.db.models import Message, User
 from app.db.postgres import Postgres
+from app.core.context import get_global_context
 
 
 async def save_message(
@@ -45,7 +46,10 @@ async def save_message(
             sender = sender.User
         if hasattr(receiver, 'User'):
             receiver = receiver.User
-            
+
+        classifier = get_global_context().classifier
+        classification = classifier.predict(content)
+    
         # Create message object
         message_id = uuid4()
         new_message = Message(
@@ -53,7 +57,10 @@ async def save_message(
             sender_id=sender_uuid,
             receiver_id=receiver_uuid,
             content=content,
-            timestamp=datetime.now(tz=timezone.utc)
+            timestamp=datetime.now(tz=timezone.utc),
+            is_manipulative=classification["is_manipulative"],
+            techniques=classification["techniques"] if classification["is_manipulative"] else None,
+            vulnerabilities=classification["vulnerabilities"] if classification["is_manipulative"] else None
         )
         
         # Save to database
@@ -66,7 +73,10 @@ async def save_message(
             sender_id=sender_uuid,
             receiver_id=receiver_uuid,
             content=content,
-            timestamp=datetime.now(tz=timezone.utc)
+            timestamp=datetime.now(tz=timezone.utc),
+            is_manipulative=classification["is_manipulative"],
+            techniques=classification["techniques"] if classification["is_manipulative"] else None,
+            vulnerabilities=classification["vulnerabilities"] if classification["is_manipulative"] else None
         )
         
         logger.info(f"Message saved: ID {message_id} from {sender_id} to {receiver_id}")

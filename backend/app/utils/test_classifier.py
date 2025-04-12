@@ -10,6 +10,6 @@ classifier = ManipulativeMessageClassifier()
 classifier.load_model(str(MODEL_PATH))
 
 if __name__ == "__main__":
-    message = "You don't have a choice. Do it now, or there will be consequences."
+    message = "You don't have a choice. Do it now, or there will be consequences. I need you."
     result = classifier.predict(message)
     print(result)
