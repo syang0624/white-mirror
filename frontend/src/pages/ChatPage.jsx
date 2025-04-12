@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import ChatArea from "../components/ChatArea";
 import { authApi, chatApi, ChatWebSocket } from "../lib/api";
 
 function ChatPage() {
+  const navigate = useNavigate();
+  
   // State for the currently logged in user
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -275,6 +278,11 @@ function ChatPage() {
     ? conversationsMap[selectedContact.id] || []
     : [];
 
+    const handleDashboardClick = () => {
+      console.log('Dashboard button clicked');
+      navigate('/dashboard');
+    };
+
   return (
     <div className="h-screen flex">
       <Sidebar
@@ -284,6 +292,7 @@ function ChatPage() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         currentUser={currentUser}
+        onDashboardClick={handleDashboardClick}
       />
 
       {selectedContact ? (

@@ -8,7 +8,8 @@ const Sidebar = ({
   setSelectedContact, 
   searchQuery, 
   setSearchQuery,
-  currentUser
+  currentUser,
+  onDashboardClick
 }) => {
   // Filter contacts based on search query
   const filteredContacts = contacts.filter(contact => 
@@ -77,6 +78,31 @@ const Sidebar = ({
           </div>
         )}
       </div>
+
+      {/* Dashboard Button */}
+      <div className="px-3 mb-2">
+        <button
+          onClick={onDashboardClick}
+          className="w-full py-2 px-4 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-lg shadow-md transition-all duration-300 flex items-center justify-center group"
+        >
+          <svg 
+            className="w-5 h-5 mr-2 group-hover:animate-pulse" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth="2" 
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            ></path>
+          </svg>
+          <span className="font-medium">Dashboard</span>
+        </button>
+      </div>
+
       
       {/* User profile */}
       <div className="p-4 border-t border-gray-200 flex items-center">
