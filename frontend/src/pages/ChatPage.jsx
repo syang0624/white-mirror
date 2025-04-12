@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import ChatArea from "../components/ChatArea";
+import { authApi } from "../lib/api";
 
 function ChatPage() {
   const [selectedContact, setSelectedContact] = useState("ai-assistant");
@@ -15,69 +16,9 @@ function ChatPage() {
       lastMessage: "How can I help you today?",
       time: "10:00 AM",
     },
-    {
-      id: "john-doe",
-      name: "John Doe",
-      avatar: "",
-      status: "offline",
-      lastMessage: "See you tomorrow!",
-      time: "Yesterday",
-    },
-    {
-      id: "jane-smith",
-      name: "Jane Smith",
-      avatar: "",
-      status: "online",
-      lastMessage: "That sounds great!",
-      time: "11:30 AM",
-    },
   ]);
 
-  const [conversations, setConversations] = useState({
-    "ai-assistant": [
-      {
-        id: 1,
-        content: "Hello! How can I help you today?",
-        sender: "contact",
-        timestamp: "10:00 AM",
-      },
-    ],
-    "john-doe": [
-      {
-        id: 1,
-        content: "Hey, how are you?",
-        sender: "me",
-        timestamp: "9:30 AM",
-      },
-      {
-        id: 2,
-        content: "I'm good, thanks! How about you?",
-        sender: "contact",
-        timestamp: "9:32 AM",
-      },
-      {
-        id: 3,
-        content: "See you tomorrow!",
-        sender: "contact",
-        timestamp: "9:35 AM",
-      },
-    ],
-    "jane-smith": [
-      {
-        id: 1,
-        content: "Would you like to join us for dinner?",
-        sender: "me",
-        timestamp: "11:20 AM",
-      },
-      {
-        id: 2,
-        content: "That sounds great!",
-        sender: "contact",
-        timestamp: "11:30 AM",
-      },
-    ],
-  });
-
+  const [conversations, setConversations] = useState({});
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -85,6 +26,28 @@ function ChatPage() {
   const currentContact = contacts.find(
     (contact) => contact.id === selectedContact
   );
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const res = await authApi.getUsers();
+        const userList = res.response.users;
+        console.log(userList);
+        const formattedContacts = userList.map((user) => ({
+          id: user.user_id,
+          name: user.user_name,
+          avatar: "",
+          status: "online",
+          lastMessage: "",
+          time: "",
+        }));
+        setContacts((prev) => [...prev, ...formattedContacts]);
+      } catch {
+        console.error("Error fetching users");
+      }
+    };
+    fetchUsers();
+  }, []);
 
   const handleSend = async () => {
     if (!input.trim()) return;
