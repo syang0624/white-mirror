@@ -1,0 +1,115 @@
+from dataclasses import dataclass
+import asyncio
+import aiohttp
+from typing import AsyncGenerator, TypedDict, cast, Optional
+from loguru import logger
+from fastapi import FastAPI, Request, WebSocket
+import httpx
+from httpx_aiohttp import AiohttpTransport
+from contextlib import asynccontextmanager
+
+from app.core.env import Env
+from app.db.postgres import ConnParams, Postgres
+from app.core.websocket import ConnectionManager
+
+@dataclass
+class Context:
+    http_client: httpx.AsyncClient
+    db_workspace: Postgres
+    ws_manager: ConnectionManager
+
+class State(TypedDict):
+    context: Context
+
+# Global variable to store context
+global_context: Optional[Context] = None
+
+def get_ctx_from_request(request: Request):
+    return cast(Context, request.state.context)
+
+def get_postgres_client(request: Request):
+    ctx = get_ctx_from_request(request)
+    return ctx.db_workspace
+
+def get_http_client(request: Request):
+    ctx = get_ctx_from_request(request)
+    return ctx.http_client
+
+def get_ws_manager(request: Request):
+    ctx = get_ctx_from_request(request)
+    return ctx.ws_manager
+
+# Functions to access global context
+def get_global_context() -> Optional[Context]:
+    return global_context
+
+def get_global_postgres_client():
+    if global_context:
+        return global_context.db_workspace
+    return None
+
+def get_global_ws_manager():
+    if global_context:
+        return global_context.ws_manager
+    return None
+
+@asynccontextmanager
+async def lifespan(
+    app: FastAPI | None,
+) -> AsyncGenerator[State, None]:
+    """Lifespan handler for code to run before application startup"""
+    global global_context
+    
+    logger.info("Setting application context...")
+
+    db_host = Env.raw_get("POSTGRES_HOST", raise_if_none=True)
+    db_port = Env.raw_get("POSTGRES_PORT", raise_if_none=True)
+    db_user = Env.raw_get("POSTGRES_USER", raise_if_none=True)
+    db_pass = Env.raw_get("POSTGRES_PASS", raise_if_none=True)
+    db_name = Env.raw_get("POSTGRES_DB", raise_if_none=True)
+    
+    db_params = ConnParams(
+        db_user=db_user,
+        db_pass=db_pass,
+        db_host=db_host,
+        db_name=db_name,
+        db_port=int(db_port),
+    )
+
+    ws_manager = ConnectionManager()
+
+    async with Postgres.init(**db_params) as db_workspace:
+        aiohttp_session = aiohttp.ClientSession(
+            auto_decompress=True,
+            loop=asyncio.get_running_loop(),
+            connector=aiohttp.TCPConnector(
+                limit=1000,
+                use_dns_cache=True
+            ),
+            timeout=aiohttp.ClientTimeout(
+                total=180.0,
+                connect=10.0
+            )
+        )
+        
+        async with AiohttpTransport(client=aiohttp_session) as aiohttp_transport:
+            "https://github.com/openai/openai-python/issues/1596#issuecomment-2709021063"
+            http_client = httpx.AsyncClient(
+                transport=aiohttp_transport,
+                timeout=httpx.Timeout(timeout=180.0, connect=10.0),
+                limits=httpx.Limits(
+                    max_connections=1000, # default 100
+                    max_keepalive_connections=1000, # default 20
+                )
+            )
+
+            ctx = Context(
+                http_client=http_client,
+                db_workspace=db_workspace,
+                ws_manager=ws_manager
+            )
+            
+            # Set global context
+            global_context = ctx
+
+            yield {"context": ctx}

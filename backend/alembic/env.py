@@ -1,25 +1,32 @@
 from logging.config import fileConfig
-
+import os
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from app.db.models import Base
+from app.db.models import Base  # Import your models
+from app.core.env import Env  # Import your environment utils
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+# Load DB connection settings from environment variables
+section = config.config_ini_section
+config.set_section_option(section, "POSTGRES_USER", Env.raw_get("POSTGRES_USER", True))
+config.set_section_option(section, "POSTGRES_PASSWORD", Env.raw_get("POSTGRES_PASS", True))
+config.set_section_option(section, "POSTGRES_HOST", Env.raw_get("POSTGRES_HOST", True))
+config.set_section_option(section, "POSTGRES_PORT", Env.raw_get("POSTGRES_PORT", True))
+config.set_section_option(section, "POSTGRES_DB", Env.raw_get("POSTGRES_DB", True))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
+# Add your model's MetaData object here
 # for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-target_metadata = None
+target_metadata = Base.metadata  # Set this to your model's metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

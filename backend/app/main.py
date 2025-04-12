@@ -1,11 +1,10 @@
-from contextlib import asynccontextmanager
 from loguru import logger
-from os import environ
 
 from fastapi import FastAPI
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 from app.controllers._router import init_routers
+from app.core.context import lifespan
 
 def make_middleware() -> list[Middleware]:
     middleware = [
@@ -20,10 +19,6 @@ def make_middleware() -> list[Middleware]:
         ),
     ]
     return middleware
-
-@asynccontextmanager
-async def lifespan(app: FastAPI) -> None:
-    yield
 
 def create_app() -> FastAPI:
     app = FastAPI(

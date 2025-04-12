@@ -1,0 +1,26 @@
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: white-mirror-pg
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg-volume/pgdata:/var/lib/postgresql/data
+      - ./pg-volume/sql/:/docker-entrypoint-initdb.d/
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: white-mirror-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8888:80"
+    depends_on:
+      - postgres-db
+    volumes:
+      - ./pg-volume/pgadmin:/var/lib/pgadmin
