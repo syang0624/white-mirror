@@ -4,6 +4,7 @@ from fastapi.testclient import TestClient
 from loguru import logger
 from dotenv import load_dotenv
 import asyncio
+import platform
 from contextlib import asynccontextmanager
 from sqlalchemy import text
 
@@ -79,4 +80,8 @@ async def setup_database_direct():
             logger.error(f"Error during database setup: {str(e)}")
 
 if __name__ == "__main__":
+    # Set the proper event loop policy for Windows to work with psycopg
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+        
     asyncio.run(setup_database_direct())

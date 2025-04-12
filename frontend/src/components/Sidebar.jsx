@@ -2,13 +2,15 @@ import { Settings, Search, User } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+
 const Sidebar = ({ 
   contacts, 
   selectedContact, 
   setSelectedContact, 
   searchQuery, 
-  setSearchQuery 
-}) =>{
+  setSearchQuery,
+  currentUser
+}) => {
   // Filter contacts based on search query
   const filteredContacts = contacts.filter(contact => 
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -39,47 +41,59 @@ const Sidebar = ({
       
       {/* Contact list */}
       <div className="flex-1 overflow-y-auto contact-list">
-        {filteredContacts.map(contact => (
-          <div 
-            key={contact.id}
-            className={`flex items-center p-4 cursor-pointer hover:bg-gray-100 ${selectedContact === contact.id ? 'bg-blue-50' : ''}`}
-            onClick={() => setSelectedContact(contact.id)}
-          >
-            <div className="relative">
-              <Avatar className="h-12 w-12">
-                {contact.avatar ? (
-                  <AvatarImage src={contact.avatar} alt={contact.name} />
-                ) : (
-                  <AvatarFallback>
-                    {contact.name.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                )}
-              </Avatar>
-              <span 
-                className={`absolute bottom-0 right-0 w-3 h-3 rounded-full ${contact.status === 'online' ? 'bg-green-500' : 'bg-gray-400'}`} 
-              />
-            </div>
-            
-            <div className="ml-3 flex-1">
-              <div className="flex justify-between">
-                <p className="font-medium">{contact.name}</p>
-                <span className="text-xs text-gray-500">{contact.time}</span>
+        {filteredContacts.length > 0 ? (
+          filteredContacts.map(contact => (
+            <div 
+              key={contact.id}
+              className={`flex items-center p-4 cursor-pointer hover:bg-gray-100 ${selectedContact && selectedContact.id === contact.id ? 'bg-blue-50' : ''}`}
+              onClick={() => setSelectedContact(contact)}
+            >
+              <div className="relative">
+                <Avatar className="h-12 w-12">
+                  {contact.avatar ? (
+                    <AvatarImage src={contact.avatar} alt={contact.name} />
+                  ) : (
+                    <AvatarFallback>
+                      {contact.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  )}
+                </Avatar>
+                <span 
+                  className={`absolute bottom-0 right-0 w-3 h-3 rounded-full ${contact.status === 'online' ? 'bg-green-500' : 'bg-gray-400'}`} 
+                />
               </div>
-              <p className="text-sm text-gray-500 truncate">{contact.lastMessage}</p>
+              
+              <div className="ml-3 flex-1">
+                <div className="flex justify-between">
+                  <p className="font-medium">{contact.name}</p>
+                  <span className="text-xs text-gray-500">{contact.time}</span>
+                </div>
+                <p className="text-sm text-gray-500 truncate">{contact.lastMessage}</p>
+              </div>
             </div>
+          ))
+        ) : (
+          <div className="p-4 text-center text-gray-500">
+            No contacts found
           </div>
-        ))}
+        )}
       </div>
       
       {/* User profile */}
       <div className="p-4 border-t border-gray-200 flex items-center">
         <Avatar className="h-10 w-10">
-          <AvatarFallback>
-            <User size={20} />
-          </AvatarFallback>
+          {currentUser ? (
+            <AvatarFallback>
+              {currentUser.name ? currentUser.name.split(' ').map(n => n[0]).join('') : 'U'}
+            </AvatarFallback>
+          ) : (
+            <AvatarFallback>
+              <User size={20} />
+            </AvatarFallback>
+          )}
         </Avatar>
         <div className="ml-3">
-          <p className="font-medium">You</p>
+          <p className="font-medium">{currentUser ? currentUser.name || currentUser.user_name : 'You'}</p>
           <p className="text-xs text-gray-500">Available</p>
         </div>
       </div>

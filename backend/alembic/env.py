@@ -1,7 +1,16 @@
 from logging.config import fileConfig
 import os
+import sys
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+
+# Add the parent directory to path so that imports work correctly
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Import dotenv first to load environment variables
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env'))
 
 from alembic import context
 from app.db.models import Base  # Import your models
@@ -13,11 +22,18 @@ config = context.config
 
 # Load DB connection settings from environment variables
 section = config.config_ini_section
-config.set_section_option(section, "POSTGRES_USER", Env.raw_get("POSTGRES_USER", True))
-config.set_section_option(section, "POSTGRES_PASSWORD", Env.raw_get("POSTGRES_PASS", True))
-config.set_section_option(section, "POSTGRES_HOST", Env.raw_get("POSTGRES_HOST", True))
-config.set_section_option(section, "POSTGRES_PORT", Env.raw_get("POSTGRES_PORT", True))
-config.set_section_option(section, "POSTGRES_DB", Env.raw_get("POSTGRES_DB", True))
+
+# Create a direct PostgreSQL connection string - note we use 'host.docker.internal' as fallback
+# to allow connecting to the host machine from inside Docker containers if needed
+host = os.environ.get('POSTGRES_HOST', 'localhost')
+port = os.environ.get('POSTGRES_PORT', '5432')
+user = os.environ.get('POSTGRES_USER', 'admin')
+password = os.environ.get('POSTGRES_PASS', '123456')
+database = os.environ.get('POSTGRES_DB', 'postgres')
+
+# Construct SQLAlchemy URL explicitly
+db_url = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}"
+config.set_main_option("sqlalchemy.url", db_url)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

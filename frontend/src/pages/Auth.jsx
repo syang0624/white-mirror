@@ -14,15 +14,24 @@ function Auth({ onLogin }) {
     e.preventDefault();
 
     try {
+      let userData;
       if (isLogin) {
         console.log("Logging in with:", { email, password });
-        const res = await authApi.login(email, password); // Await the login API call
+        const res = await authApi.login(email, password);
         console.log("Login successful:", res);
+        userData = res.response;
       } else {
         console.log("Registering with:", { name, email, password });
-        const res = await authApi.signup(email, name, password); // Await the signup API call
+        const res = await authApi.signup(email, name, password);
         console.log("Signup successful:", res);
+        userData = res.response;
       }
+      
+      // Store user data in localStorage
+      if (userData) {
+        localStorage.setItem("user", JSON.stringify(userData));
+      }
+      
       onLogin(true); // Call the onLogin callback after successful authentication
     } catch (error) {
       console.error(
