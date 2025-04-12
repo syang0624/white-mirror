@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, Mail, Lock, UserPlus, LogIn } from "lucide-react";
 
-function Auth() {
+function Auth({ onLogin }) {
     const [isLogin, setIsLogin] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
@@ -16,6 +16,7 @@ function Auth() {
         } else {
             console.log("Registering with:", { name, email, password });
         }
+        onLogin(true);
     };
 
     return (
@@ -77,7 +78,7 @@ function Auth() {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="block w-full rounded-md border-0 py-3 pl-2 pr-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="block w-full rounded-md border-0 py-3 pr-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="you@example.com"
                             />
                         </div>
