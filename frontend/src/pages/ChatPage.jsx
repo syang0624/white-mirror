@@ -20,6 +20,12 @@ function ChatPage() {
   // WebSocket connection
   const [chatWebSocket, setChatWebSocket] = useState(null);
 
+
+  // debug useeffect
+  useEffect(() => {
+    console.log("convo map", conversationsMap);
+  }, [conversationsMap]);
+
   // Load the current user from localStorage on component mount
   useEffect(() => {
     const userJson = localStorage.getItem("user");
@@ -182,10 +188,14 @@ function ChatPage() {
         }));
 
         // Store messages in the map by contact ID
-        setConversationsMap((prevMap) => ({
-          ...prevMap,
-          [contactId]: formattedMessages,
-        }));
+        setConversationsMap((prevMap) => {
+          const updatedMap = {
+            ...prevMap,
+            [contactId]: formattedMessages,
+          };
+          console.log("Updated conversationsMap:", updatedMap); // Log the updated map
+          return updatedMap;
+        });
       }
     } catch (error) {
       console.error("Error fetching messages:", error);
