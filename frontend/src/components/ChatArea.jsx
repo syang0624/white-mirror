@@ -44,10 +44,15 @@ function ChatArea({
             <div key={message.id} className="flex flex-col">
               <ChatBubble
                 variant={message.sender === "me" ? "sent" : "received"}
-                className={`max-w-[60%] ${message.is_manipulative ? 'border-2 border-amber-400' : ''}`}
+                className={`max-w-[60%]`}
               >
                 <div className="flex flex-col">
-                  <ChatBubbleMessage>{message.content}</ChatBubbleMessage>
+                  <ChatBubbleMessage 
+                    className={`${message.is_manipulative ? 'border-2 border-amber-400' : ''}`}
+                    variant={message.sender === "me" ? "sent" : "received"}
+                  >{message.content}
+
+                  </ChatBubbleMessage>
                   <ChatBubbleTimestamp timestamp={message.timestamp} />
                 </div>
               </ChatBubble>

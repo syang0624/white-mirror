@@ -14,7 +14,7 @@ const TimelineChart = ({ timelineData }) => {
     return (
       <div className="mb-6 bg-white p-4 rounded-lg shadow">
         <h2 className="text-lg font-semibold mb-4">
-          Manipulation Techniques Over Time
+          Manipulation Techniques By Hour
         </h2>
         <div className="h-[300px] flex items-center justify-center bg-gray-50">
           <p className="text-gray-500">No data available for timeline</p>
@@ -26,29 +26,54 @@ const TimelineChart = ({ timelineData }) => {
   return (
     <div className="mb-6 bg-white p-4 rounded-lg shadow">
       <h2 className="text-lg font-semibold mb-4">
-        Manipulation Techniques Over Time
+        Manipulation Techniques By Hour
       </h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={timelineData}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
+          <XAxis
+            dataKey="formattedTime"
+            label={{
+              value: "Date & Hour",
+              position: "insideBottomRight",
+              offset: -5,
+            }}
+            tick={{ fontSize: 12 }}
+            angle={-45}
+            textAnchor="end"
+            height={60}
+          />
           <YAxis
             label={{ value: "Count", angle: -90, position: "insideLeft" }}
           />
-          <Tooltip />
-          <Legend />
+          <Tooltip
+            labelFormatter={(label) => `Time: ${label}`}
+            formatter={(value, name) => [`${value} messages`, name]}
+          />
+          <Legend verticalAlign="top" height={36} />
           {Object.keys(timelineData[0] || {})
-            .filter((key) => key !== "date")
-            .map((technique, index) => (
-              <Line
-                key={technique}
-                type="monotone"
-                dataKey={technique}
-                stroke={`hsl(${
-                  (index * 360) / Object.keys(timelineData[0] || {}).length
-                }, 70%, 50%)`}
-              />
-            ))}
+            .filter(
+              (key) =>
+                key !== "time" && key !== "formattedTime" && key !== "dateObj"
+            )
+            .map((technique, index) => {
+              // Use CSS variables for chart colors from theme
+              const colorVar = `var(--chart-${(index % 5) + 1}, hsl(${
+                (index * 60) % 360
+              }, 70%, 50%))`;
+              return (
+                <Line
+                  key={technique}
+                  type="monotone"
+                  dataKey={technique}
+                  name={technique}
+                  stroke={colorVar}
+                  strokeWidth={2}
+                  dot={{ r: 4 }}
+                  activeDot={{ r: 6 }}
+                />
+              );
+            })}
         </LineChart>
       </ResponsiveContainer>
     </div>
