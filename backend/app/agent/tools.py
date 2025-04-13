@@ -3,7 +3,7 @@ from langchain_core.tools import tool
 from uuid import UUID
 from pydantic import BaseModel, Field
 
-from app.core.context import get_global_perplexity
+from app.core.context import get_global_perplexity, get_global_postgres_client
 from app.service.statistics import (
     get_all_statistics, 
     get_single_statistics,
