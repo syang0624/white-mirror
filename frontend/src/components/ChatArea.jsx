@@ -8,6 +8,7 @@ import {
 
 import { ChatInput } from "@/components/ui/chat/chat-input";
 import { Phone, Video, MoreVertical, SendHorizontal, AlertTriangle } from "lucide-react";
+import ChatFooter from "./ChatFooter";
 
 import ChatHeader from "./ChatHeader";
 import { useEffect, useRef } from "react";
