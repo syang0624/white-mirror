@@ -9,6 +9,7 @@ from httpx_aiohttp import AiohttpTransport
 from contextlib import asynccontextmanager
 from langgraph.graph.graph import CompiledGraph
 from langchain_openai import ChatOpenAI
+from langchain_perplexity import ChatPerplexity
 
 from app.core.env import Env
 from app.db.postgres import ConnParams, Postgres
@@ -28,6 +29,7 @@ class Context:
     classifier: ManipulativeMessageClassifier
     agent_graph: CompiledGraph
     llm: ChatOpenAI
+    perplexity: ChatPerplexity
 
 class State(TypedDict):
     context: Context
@@ -42,6 +44,10 @@ def get_ctx_from_request(request: Request):
 def get_llm(request: Request):
     ctx = get_ctx_from_request(request)
     return ctx.llm
+
+def get_perplexity(request: Request):
+    ctx = get_ctx_from_request(request)
+    return ctx.perplexity
 
 def get_postgres_client(request: Request):
     ctx = get_ctx_from_request(request)
@@ -82,6 +88,11 @@ def get_global_llm():
         return global_context.llm
     return None
 
+def get_global_perplexity():
+    if global_context:
+        return global_context.perplexity
+    return None
+
 @asynccontextmanager
 async def lifespan(
     app: FastAPI | None,
@@ -100,6 +111,10 @@ async def lifespan(
     
     # OpenAI API key
     openai_api_key = Env.raw_get("OPENAI_API_KEY", raise_if_none=True)
+
+    # Perplexity API key
+    pplx_api_key = Env.raw_get("PPLX_API_KEY", raise_if_none=True)
+    print(pplx_api_key)
     
     db_params = ConnParams(
         db_user=db_user,
@@ -119,6 +134,13 @@ async def lifespan(
         temperature=0.7,
         model_name="gpt-4o-mini",
         api_key=openai_api_key
+    )
+    
+    # Initialize Perplexity
+    perplexity = ChatPerplexity(
+        pplx_api_key=pplx_api_key,
+        model="sonar",
+        temperature=0.7
     )
     
     # Build and compile the agent graph
@@ -155,7 +177,8 @@ async def lifespan(
                 ws_manager=ws_manager,
                 classifier=classifier,
                 agent_graph=agent_graph,
-                llm=llm
+                llm=llm,
+                perplexity=perplexity
             )
             
             # Set global context

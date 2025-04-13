@@ -3,7 +3,7 @@ from langchain_core.tools import tool
 from uuid import UUID
 from pydantic import BaseModel, Field
 
-from app.core.context import get_global_postgres_client
+from app.core.context import get_global_perplexity
 from app.service.statistics import (
     get_all_statistics, 
     get_single_statistics,
@@ -233,14 +233,6 @@ async def find_messages_targeting_vulnerability(
     except Exception as e:
         return {"error": f"Failed to retrieve messages: {str(e)}"}
 
-# Create tool list for the agent
-tools = [
-    analyze_all_users,
-    analyze_specific_user,
-    find_messages_with_technique,
-    find_messages_targeting_vulnerability
-]
-
 # Function to create tools with injected user_id
 def create_tools_with_user_id(user_id: UUID):
     """Create tool instances with user_id injected into their closures"""
@@ -313,5 +305,54 @@ def create_tools_with_user_id(user_id: UUID):
         analyze_all_users_with_user,
         analyze_specific_user_with_user,
         find_messages_with_technique_with_user,
-        find_messages_targeting_vulnerability_with_user
+        find_messages_targeting_vulnerability_with_user,
+        web_search
     ]
+
+@tool(description="Search the web for general information about manipulation, psychology, or communication patterns. Use this ONLY for general knowledge questions, not for personal user data.")
+async def web_search(
+    query: str = Field(..., description="Search query about manipulation, psychology, or communication patterns. This should be used for general questions only, not for analyzing a user's personal conversations.")
+) -> str:
+    """
+    Search the web for general information about manipulation, psychology, or communication patterns.
+    Only use this for general knowledge questions that require external information (e.g., "What are common manipulation techniques?")
+    DO NOT use this for analyzing a specific user's conversations - use the analyze_* tools for that.
+    
+    Args:
+        query: Search query about manipulation, psychology, or communication patterns
+        
+    Returns:
+        Search results from the web
+    """
+    perplexity = get_global_perplexity()
+    
+    if not perplexity:
+        return "Web search is currently unavailable."
+    
+    try:
+        # Format the query to focus on manipulation and psychology topics
+        enhanced_query = f"Provide a concise, factual response about the following topic related to manipulation or psychology: {query}"
+        
+        # Create a system message that guides the response format
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant providing factual information about psychology, manipulation tactics, and healthy communication patterns. Keep your responses informative, educational, and concise."},
+            {"role": "user", "content": enhanced_query}
+        ]
+        
+        # Invoke Perplexity
+        response = await perplexity.ainvoke(messages)
+        
+        # Return the content
+        return response.content
+    except Exception as e:
+        return f"Error searching the web: {str(e)}"
+
+
+# Create tool list for the agent
+tools = [
+    web_search,
+    analyze_all_users,
+    analyze_specific_user,
+    find_messages_with_technique,
+    find_messages_targeting_vulnerability
+]

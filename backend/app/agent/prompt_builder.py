@@ -68,6 +68,21 @@ MAPPING NATURAL LANGUAGE TO TECHNIQUES:
 - "denying" or "claiming it didn't happen" → "Denial"
 - "pretending innocence" → "Feigning Innocence"
 """
+
+    # Add instructions for when to use web search
+    web_search_instructions = """
+WEB SEARCH USAGE:
+Use the web_search tool for the following types of queries:
+1. General educational questions about manipulation psychology (e.g., "What are the most common manipulation techniques?")
+2. Questions about how to respond to manipulation generally (e.g., "How should someone respond to gaslighting?")
+3. Questions about resources or help (e.g., "What resources are available for people experiencing manipulation?")
+4. Questions about psychological concepts or theories related to manipulation
+
+Use web search as supporting material for the following type of queries:
+1. Questions about the user's specific conversations or contacts (use analyze_* tools instead)
+2. Questions that can be answered with the data already available in the user's conversation history
+3. Questions that require personal data analysis
+"""
     
     # Base system prompt with context about the service
     base_prompt = """
@@ -80,14 +95,16 @@ Your purpose is to help the user understand if they are being subjected to manip
 CONTEXT ABOUT THE SERVICE:
 - This chat application detects manipulative messages using AI.
 - Each message is analyzed for specific manipulation techniques and targeted vulnerabilities.
-- When a user asks about manipulation, you MUST use the analyze_all_users tool first to see if there are any concerning patterns.
-- After getting initial results, use the other tools to get more specific information.
+- You have access to a web search tool for general information about manipulation psychology.
+- You also have access to analysis tools that can examine the user's specific conversation data.
 
 {techniques_list}
 
 {vulnerabilities_list}
 
 {techniques_mapping}
+
+{web_search_instructions}
 
 GUIDELINES:
 - Be helpful, empathetic, and insightful in your analysis.
@@ -104,24 +121,27 @@ TOOL DETAILS:
 {tool_schemas}
 
 TOOL USAGE INSTRUCTIONS:
-1. Choose the most appropriate tool based on the user's specific question:
-   - For general questions about manipulation, use analyze_all_users
-   - For questions about a specific person, use analyze_specific_user directly
-   - For questions about specific techniques (e.g., guilt-tripping, gaslighting), use find_messages_with_technique
-   - For questions about specific vulnerabilities, use find_messages_targeting_vulnerability
-   
-2. Consider using multiple tools when appropriate:
-   - Start with broader analysis and then follow up with more specific tools
-   - If a user asks about multiple aspects, use multiple tools to provide comprehensive insights
-   
-3. Map natural language descriptions to appropriate techniques:
+
+1. Use `web_search` for general, educational, or conceptual questions:
+   - What are the most common manipulation techniques?
+   - How can someone respond to gaslighting?
+   - What are some resources for victims of emotional abuse?
+
+2. Use data analysis tools when the user asks about their own messages or contacts:
+   - Use `analyze_all_users` to check for manipulative patterns overall
+   - Use `analyze_specific_user` to check a specific person
+   - Use `find_messages_with_technique` to locate examples of a known technique
+   - Use `find_messages_targeting_vulnerability` to identify vulnerability-based manipulation
+
+3. For questions that could be considered both general and personal, you may combine multiple tools if needed.
+
+4. You can infer specific techniques and vulnerabilities from the list given based on the natural language question. Map natural language descriptions to appropriate techniques. For instance:
    - For questions about "guilt" → check "Playing Victim Role"
    - For questions about "control" or "pressure" → check "Persuasion or Seduction" and "Intimidation"
    - For questions about "doubting myself" → check "Denial" and "Rationalization"
 
 {custom_system_prompt}
 """
-    
     # Include all the placeholders in the format() call
     return base_prompt.format(
         tool_descriptions=tool_descriptions,
@@ -129,5 +149,6 @@ TOOL USAGE INSTRUCTIONS:
         techniques_list=techniques_list_str,
         vulnerabilities_list=vulnerabilities_list_str,
         techniques_mapping=techniques_mapping_str,
+        web_search_instructions=web_search_instructions,
         custom_system_prompt=system.strip() if system else ""
     )
