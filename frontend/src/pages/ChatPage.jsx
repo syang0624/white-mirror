@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import ChatArea from "../components/ChatArea";
 import { authApi, chatApi, ChatWebSocket } from "../lib/api";
-import { statisticsApi, ManipulativeTechniques, Vulnerabilities } from "../lib/statistics_api";
-
+import {
+  statisticsApi,
+  ManipulativeTechniques,
+  Vulnerabilities,
+} from "../lib/statistics_api";
+import { agentApi } from "../lib/agent_api";
 
 function ChatPage() {
   const navigate = useNavigate();
-  
+
   // State for the currently logged in user
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -27,14 +31,13 @@ function ChatPage() {
 
   // StatsBot
   const [statsBot] = useState({
-    id: 'statsbot',
-    name: 'StatsBot',
-    status: 'online',
-    lastMessage: 'Type /help to get started',
-    time: 'Now',
-    isBot: true
+    id: "statsbot",
+    name: "StatsBot",
+    status: "online",
+    lastMessage: "Type /help to get started",
+    time: "Now",
+    isBot: true,
   });
-
 
   // debug useeffect
   useEffect(() => {
@@ -56,31 +59,31 @@ function ChatPage() {
       fetchContacts();
 
       // Initialize StatsBot conversation if it doesn't exist
-      setConversationsMap(prevMap => {
-        if (!prevMap['statsbot']) {
+      setConversationsMap((prevMap) => {
+        if (!prevMap["statsbot"]) {
           return {
             ...prevMap,
-            'statsbot': [
+            statsbot: [
               {
-                id: 'welcome-msg',
-                content: 'Hello! I can help you fetch statistics. Try typing one of these commands:\n\n' +
-                         '/all - Get statistics for all users\n' +
-                         '/user [user_id] - Get statistics for a specific user\n' +
-                         '/technique [technique_name] - Get messages using a specific technique\n' + 
-                         '/vulnerability [vulnerability_name] - Get messages targeting a specific vulnerability\n' +
-                         '/help - Show available commands',
+                id: "welcome-msg",
+                content:
+                  "Hello! I can help you fetch statistics. Try typing one of these commands:\n\n" +
+                  "/all - Get statistics for all users\n" +
+                  "/user [user_id] - Get statistics for a specific user\n" +
+                  "/technique [technique_name] - Get messages using a specific technique\n" +
+                  "/vulnerability [vulnerability_name] - Get messages targeting a specific vulnerability\n" +
+                  "/help - Show available commands",
                 timestamp: new Date().toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
                 }),
-                sender: 'statsbot'
-              }
-            ]
+                sender: "statsbot",
+              },
+            ],
           };
         }
         return prevMap;
       });
-
     }
   }, [currentUser]);
 
@@ -101,10 +104,9 @@ function ChatPage() {
   // Load messages when a contact is selected
   useEffect(() => {
     if (selectedContact && currentUser) {
-      if (selectedContact.id !== 'statsbot') {
+      if (selectedContact.id !== "statsbot") {
         fetchMessages(selectedContact.id);
       }
-
     }
   }, [selectedContact, currentUser]);
 
@@ -132,7 +134,6 @@ function ChatPage() {
         // Select the first contact if none is selected
         if (!selectedContact) {
           setSelectedContact(statsBot);
-
         }
       }
     } catch (error) {
@@ -257,23 +258,29 @@ function ChatPage() {
 
     let message = `**User**: ${stats.person_name}\n`;
     message += `**Total Messages**: ${stats.total_messages}\n`;
-    message += `**Manipulative Messages**: ${stats.manipulative_count} (${(stats.manipulative_percentage * 100).toFixed(1)}%)\n\n`;
-    
+    message += `**Manipulative Messages**: ${stats.manipulative_count} (${(
+      stats.manipulative_percentage * 100
+    ).toFixed(1)}%)\n\n`;
+
     if (stats.techniques && stats.techniques.length > 0) {
       message += "**Top Techniques**:\n";
-      stats.techniques.forEach(tech => {
-        message += `• ${tech.name}: ${tech.count} (${(tech.percentage * 100).toFixed(1)}%)\n`;
+      stats.techniques.forEach((tech) => {
+        message += `• ${tech.name}: ${tech.count} (${(
+          tech.percentage * 100
+        ).toFixed(1)}%)\n`;
       });
-      message += '\n';
+      message += "\n";
     }
-    
+
     if (stats.vulnerabilities && stats.vulnerabilities.length > 0) {
       message += "**Top Vulnerabilities**:\n";
-      stats.vulnerabilities.forEach(vuln => {
-        message += `• ${vuln.name}: ${vuln.count} (${(vuln.percentage * 100).toFixed(1)}%)\n`;
+      stats.vulnerabilities.forEach((vuln) => {
+        message += `• ${vuln.name}: ${vuln.count} (${(
+          vuln.percentage * 100
+        ).toFixed(1)}%)\n`;
       });
     }
-    
+
     return message;
   };
 
@@ -299,7 +306,7 @@ function ChatPage() {
         message += `_Vulnerabilities: ${msg.vulnerabilities.join(", ")}_\n`;
       }
 
-      message += '\n';
+      message += "\n";
     });
 
     return message;
@@ -308,153 +315,215 @@ function ChatPage() {
   // Process commands for StatsBot
   const processStatsBotCommand = async (command) => {
     setIsLoading(true);
-    
+
     try {
-      const parts = command.split(' ');
+      const parts = command.split(" ");
       const cmd = parts[0].toLowerCase();
-      
+
       // Add the user message to the conversation
       const userMessage = {
         id: Date.now().toString(),
         content: command,
-        sender: 'me',
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        sender: "me",
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
       };
 
-      setConversationsMap(prevMap => {
-        const existingConvo = prevMap['statsbot'] || [];
+      setConversationsMap((prevMap) => {
+        const existingConvo = prevMap["statsbot"] || [];
         return {
           ...prevMap,
-          'statsbot': [...existingConvo, userMessage]
+          statsbot: [...existingConvo, userMessage],
         };
       });
 
-      let responseContent = '';
-      
+      let responseContent = "";
+
       if (!currentUser) {
-        responseContent = "Error: You need to be logged in to use the StatsBot.";
+        responseContent =
+          "Error: You need to be logged in to use the StatsBot.";
       } else {
         switch (cmd) {
-          case '/help':
-            responseContent = 'Here are the available commands:\n\n' +
-                           '/all - Get statistics for all users who communicated with you\n' +
-                           '/user [user_id] - Get statistics for a specific user\n' +
-                           '/technique [technique_name] - Get messages using a specific technique\n' + 
-                           '/vulnerability [vulnerability_name] - Get messages targeting a specific vulnerability\n\n' +
-                           'Available techniques: ' + Object.values(ManipulativeTechniques).join(', ') + '\n\n' +
-                           'Available vulnerabilities: ' + Object.values(Vulnerabilities).join(', ');
+          case "/help":
+            responseContent =
+              "Here are the available commands:\n\n" +
+              "/all - Get statistics for all users who communicated with you\n" +
+              "/user [user_id] - Get statistics for a specific user\n" +
+              "/technique [technique_name] - Get messages using a specific technique\n" +
+              "/vulnerability [vulnerability_name] - Get messages targeting a specific vulnerability\n\n" +
+              "Available techniques: " +
+              Object.values(ManipulativeTechniques).join(", ") +
+              "\n\n" +
+              "Available vulnerabilities: " +
+              Object.values(Vulnerabilities).join(", ");
             break;
 
-          case '/all':
-            const allStats = await statisticsApi.getAllStatistics(currentUser.user_id);
-            if (allStats.success && allStats.response && allStats.response.statistics) {
+          case "/all": {
+            const allStats = await statisticsApi.getAllStatistics(
+              currentUser.user_id
+            );
+            if (
+              allStats.success &&
+              allStats.response &&
+              allStats.response.statistics
+            ) {
               if (allStats.response.statistics.length === 0) {
-                responseContent = "No manipulative statistics found. This is good news!";
+                responseContent =
+                  "No manipulative statistics found. This is good news!";
               } else {
                 responseContent = `**Statistics for all users communicating with you:**\n\n`;
                 allStats.response.statistics.forEach((userStat, index) => {
-                  responseContent += `### User ${index + 1}: ${userStat.person_name}\n`;
-                  responseContent += `**Manipulative Messages**: ${userStat.manipulative_count} (${(userStat.manipulative_percentage * 100).toFixed(1)}%)\n`;
-                  
+                  responseContent += `### User ${index + 1}: ${
+                    userStat.person_name
+                  }\n`;
+                  responseContent += `**Manipulative Messages**: ${
+                    userStat.manipulative_count
+                  } (${(userStat.manipulative_percentage * 100).toFixed(
+                    1
+                  )}%)\n`;
+
                   if (userStat.techniques && userStat.techniques.length > 0) {
                     responseContent += "**Top Techniques**:\n";
-                    userStat.techniques.forEach(tech => {
-                      responseContent += `• ${tech.name}: ${tech.count} (${(tech.percentage * 100).toFixed(1)}%)\n`;
+                    userStat.techniques.forEach((tech) => {
+                      responseContent += `• ${tech.name}: ${tech.count} (${(
+                        tech.percentage * 100
+                      ).toFixed(1)}%)\n`;
                     });
                   }
-                  
-                  if (userStat.vulnerabilities && userStat.vulnerabilities.length > 0) {
+
+                  if (
+                    userStat.vulnerabilities &&
+                    userStat.vulnerabilities.length > 0
+                  ) {
                     responseContent += "**Top Vulnerabilities**:\n";
-                    userStat.vulnerabilities.forEach(vuln => {
-                      responseContent += `• ${vuln.name}: ${vuln.count} (${(vuln.percentage * 100).toFixed(1)}%)\n`;
+                    userStat.vulnerabilities.forEach((vuln) => {
+                      responseContent += `• ${vuln.name}: ${vuln.count} (${(
+                        vuln.percentage * 100
+                      ).toFixed(1)}%)\n`;
                     });
                   }
-                  
+
                   responseContent += "\n";
                 });
               }
             } else {
-              responseContent = `Error retrieving statistics: ${allStats.message || 'Unknown error'}`;
+              responseContent = `Error retrieving statistics: ${
+                allStats.message || "Unknown error"
+              }`;
             }
             break;
+          }
 
-          case '/user':
+          case "/user":
             if (parts.length < 2) {
-              responseContent = "Please provide a user ID. Usage: /user [user_id]";
+              responseContent =
+                "Please provide a user ID. Usage: /user [user_id]";
             } else {
               const userId = parts[1];
               try {
-                const userStats = await statisticsApi.getSingleStatistics(currentUser.user_id, userId);
+                const userStats = await statisticsApi.getSingleStatistics(
+                  currentUser.user_id,
+                  userId
+                );
                 if (userStats.success && userStats.response) {
                   responseContent = formatStatistics(userStats.response);
                 } else {
-                  responseContent = `Error retrieving user statistics: ${userStats.message || 'User not found or no messages exist'}`;
+                  responseContent = `Error retrieving user statistics: ${
+                    userStats.message || "User not found or no messages exist"
+                  }`;
                 }
               } catch (error) {
-                responseContent = `Error: ${error.message || 'Could not fetch user statistics'}`;
+                responseContent = `Error: ${
+                  error.message || "Could not fetch user statistics"
+                }`;
               }
             }
             break;
 
-          case '/technique':
+          case "/technique":
             if (parts.length < 2) {
-              responseContent = "Please provide a technique name. Usage: /technique [technique_name]\n\n" +
-                               "Available techniques: " + Object.values(ManipulativeTechniques).join(', ');
+              responseContent =
+                "Please provide a technique name. Usage: /technique [technique_name]\n\n" +
+                "Available techniques: " +
+                Object.values(ManipulativeTechniques).join(", ");
             } else {
               // Extract technique name - need to handle multi-word techniques
               const techniqueParts = [];
               let userNameIndex = -1;
-              
+
               // Find which part starts the username by checking if each part is a technique
               for (let i = 1; i < parts.length; i++) {
-                const possibleTechnique = techniqueParts.concat(parts[i]).join(' ');
-                const nextPossibleTechnique = techniqueParts.concat(parts[i]).concat(parts[i+1] || '').join(' ');
-                
+                const possibleTechnique = techniqueParts
+                  .concat(parts[i])
+                  .join(" ");
+                const nextPossibleTechnique = techniqueParts
+                  .concat(parts[i])
+                  .concat(parts[i + 1] || "")
+                  .join(" ");
+
                 // If adding the next word no longer matches any technique, we've found the end
-                if (!Object.values(ManipulativeTechniques).some(t => t.toLowerCase().includes(nextPossibleTechnique.toLowerCase())) &&
-                    Object.values(ManipulativeTechniques).some(t => t.toLowerCase().includes(possibleTechnique.toLowerCase()))) {
+                if (
+                  !Object.values(ManipulativeTechniques).some((t) =>
+                    t
+                      .toLowerCase()
+                      .includes(nextPossibleTechnique.toLowerCase())
+                  ) &&
+                  Object.values(ManipulativeTechniques).some((t) =>
+                    t.toLowerCase().includes(possibleTechnique.toLowerCase())
+                  )
+                ) {
                   userNameIndex = i + 1;
                   techniqueParts.push(parts[i]);
                   break;
                 }
-                
+
                 techniqueParts.push(parts[i]);
-                
+
                 // If we've found an exact match for a technique, stop here
-                if (Object.values(ManipulativeTechniques).includes(possibleTechnique)) {
+                if (
+                  Object.values(ManipulativeTechniques).includes(
+                    possibleTechnique
+                  )
+                ) {
                   userNameIndex = i + 1;
                   break;
                 }
               }
-              
-              const techniqueName = techniqueParts.join(' ');
-              
+
+              const techniqueName = techniqueParts.join(" ");
+
               // Check if the technique exists
-              const exactTechniqueMatch = Object.values(ManipulativeTechniques).find(
-                t => t.toLowerCase() === techniqueName.toLowerCase()
-              );
-              
+              const exactTechniqueMatch = Object.values(
+                ManipulativeTechniques
+              ).find((t) => t.toLowerCase() === techniqueName.toLowerCase());
+
               if (!exactTechniqueMatch) {
-                responseContent = `Technique "${techniqueName}" not found.\n\nAvailable techniques: ` + 
-                                 Object.values(ManipulativeTechniques).join(', ');
+                responseContent =
+                  `Technique "${techniqueName}" not found.\n\nAvailable techniques: ` +
+                  Object.values(ManipulativeTechniques).join(", ");
               } else {
                 try {
                   let selectedUserId = null;
-                  
+
                   // If there are parts remaining after the technique name, they're the username
                   if (userNameIndex > 0 && userNameIndex < parts.length) {
-                    const userName = parts.slice(userNameIndex).join(' ');
-                    
+                    const userName = parts.slice(userNameIndex).join(" ");
+
                     // Try to find the contact by name
-                    const matchingContact = contacts.find(contact => 
-                      contact.name.toLowerCase().includes(userName.toLowerCase())
+                    const matchingContact = contacts.find((contact) =>
+                      contact.name
+                        .toLowerCase()
+                        .includes(userName.toLowerCase())
                     );
-                    
+
                     if (matchingContact) {
                       selectedUserId = matchingContact.id;
                     } else {
                       // If userName looks like a UUID, use it directly
-                      const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+                      const uuidPattern =
+                        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
                       if (uuidPattern.test(userName)) {
                         selectedUserId = userName;
                       } else {
@@ -463,89 +532,124 @@ function ChatPage() {
                       }
                     }
                   }
-                  // Note: If no username is provided (selectedUserId remains null), 
+                  // Note: If no username is provided (selectedUserId remains null),
                   // the API will return messages with this technique from all users
-                  
+
                   const messages = await statisticsApi.getMessagesByTechnique(
-                    currentUser.user_id, 
+                    currentUser.user_id,
                     exactTechniqueMatch, // Use the exact match from the enum
                     selectedUserId
                   );
-                  
+
                   if (messages.success && messages.response) {
                     // Add clarity to the response about which users are included
-                    const userScope = selectedUserId ? `from user "${contacts.find(c => c.id === selectedUserId)?.name || 'Selected user'}"` : "from all users";
-                    responseContent = `Finding messages with technique "${exactTechniqueMatch}" ${userScope}:\n\n` + 
-                                      formatMessages(messages.response, 'technique');
+                    const userScope = selectedUserId
+                      ? `from user "${
+                          contacts.find((c) => c.id === selectedUserId)?.name ||
+                          "Selected user"
+                        }"`
+                      : "from all users";
+                    responseContent =
+                      `Finding messages with technique "${exactTechniqueMatch}" ${userScope}:\n\n` +
+                      formatMessages(messages.response, "technique");
                   } else {
-                    responseContent = `Error retrieving messages: ${messages.message || 'No messages found'}`;
+                    responseContent = `Error retrieving messages: ${
+                      messages.message || "No messages found"
+                    }`;
                   }
                 } catch (error) {
-                  responseContent = `Error: ${error.message || 'Could not fetch messages by technique'}`;
+                  responseContent = `Error: ${
+                    error.message || "Could not fetch messages by technique"
+                  }`;
                 }
               }
             }
             break;
 
-          case '/vulnerability':
+          case "/vulnerability":
             if (parts.length < 2) {
-              responseContent = "Please provide a vulnerability name. Usage: /vulnerability [vulnerability_name]\n\n" +
-                               "Available vulnerabilities: " + Object.values(Vulnerabilities).join(', ');
+              responseContent =
+                "Please provide a vulnerability name. Usage: /vulnerability [vulnerability_name]\n\n" +
+                "Available vulnerabilities: " +
+                Object.values(Vulnerabilities).join(", ");
             } else {
               // Extract vulnerability name - need to handle multi-word vulnerabilities
               const vulnerabilityParts = [];
               let userNameIndex = -1;
-              
+
               // Find which part starts the username by checking if each part is a vulnerability
               for (let i = 1; i < parts.length; i++) {
-                const possibleVulnerability = vulnerabilityParts.concat(parts[i]).join(' ');
-                const nextPossibleVulnerability = vulnerabilityParts.concat(parts[i]).concat(parts[i+1] || '').join(' ');
-                
+                const possibleVulnerability = vulnerabilityParts
+                  .concat(parts[i])
+                  .join(" ");
+                const nextPossibleVulnerability = vulnerabilityParts
+                  .concat(parts[i])
+                  .concat(parts[i + 1] || "")
+                  .join(" ");
+
                 // If adding the next word no longer matches any vulnerability, we've found the end
-                if (!Object.values(Vulnerabilities).some(v => v.toLowerCase().includes(nextPossibleVulnerability.toLowerCase())) &&
-                    Object.values(Vulnerabilities).some(v => v.toLowerCase().includes(possibleVulnerability.toLowerCase()))) {
+                if (
+                  !Object.values(Vulnerabilities).some((v) =>
+                    v
+                      .toLowerCase()
+                      .includes(nextPossibleVulnerability.toLowerCase())
+                  ) &&
+                  Object.values(Vulnerabilities).some((v) =>
+                    v
+                      .toLowerCase()
+                      .includes(possibleVulnerability.toLowerCase())
+                  )
+                ) {
                   userNameIndex = i + 1;
                   vulnerabilityParts.push(parts[i]);
                   break;
                 }
-                
+
                 vulnerabilityParts.push(parts[i]);
-                
+
                 // If we've found an exact match for a vulnerability, stop here
-                if (Object.values(Vulnerabilities).includes(possibleVulnerability)) {
+                if (
+                  Object.values(Vulnerabilities).includes(possibleVulnerability)
+                ) {
                   userNameIndex = i + 1;
                   break;
                 }
               }
-              
-              const vulnerabilityName = vulnerabilityParts.join(' ');
-              
+
+              const vulnerabilityName = vulnerabilityParts.join(" ");
+
               // Check if the vulnerability exists
-              const exactVulnerabilityMatch = Object.values(Vulnerabilities).find(
-                v => v.toLowerCase() === vulnerabilityName.toLowerCase()
+              const exactVulnerabilityMatch = Object.values(
+                Vulnerabilities
+              ).find(
+                (v) => v.toLowerCase() === vulnerabilityName.toLowerCase()
               );
-              
+
               if (!exactVulnerabilityMatch) {
-                responseContent = `Vulnerability "${vulnerabilityName}" not found.\n\nAvailable vulnerabilities: ` + 
-                                 Object.values(Vulnerabilities).join(', ');
+                responseContent =
+                  `Vulnerability "${vulnerabilityName}" not found.\n\nAvailable vulnerabilities: ` +
+                  Object.values(Vulnerabilities).join(", ");
               } else {
                 try {
                   let selectedUserId = null;
-                  
+
                   // If there are parts remaining after the vulnerability name, they're the username
                   if (userNameIndex > 0 && userNameIndex < parts.length) {
-                    const userName = parts.slice(userNameIndex).join(' ');
-                    
+                    const userName = parts.slice(userNameIndex).join(" ");
+
                     // Try to find the contact by name
-                    const matchingContact = contacts.find(contact => 
-                      contact.name.toLowerCase().includes(userName.toLowerCase())
+                    const matchingContact = contacts.find((contact) =>
+                      contact.name
+                        .toLowerCase()
+                        .includes(userName.toLowerCase())
                     );
-                    
+
                     if (matchingContact) {
                       selectedUserId = matchingContact.id;
                     } else {
                       // If userName looks like a UUID, use it directly
-                      const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+                      const uuidPattern =
+                        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
                       if (uuidPattern.test(userName)) {
                         selectedUserId = userName;
                       } else {
@@ -554,79 +658,101 @@ function ChatPage() {
                       }
                     }
                   }
-                  
-                  const messages = await statisticsApi.getMessagesByVulnerability(
-                    currentUser.user_id, 
-                    exactVulnerabilityMatch, // Use the exact match from the enum
-                    selectedUserId
-                  );
-                  
+
+                  const messages =
+                    await statisticsApi.getMessagesByVulnerability(
+                      currentUser.user_id,
+                      exactVulnerabilityMatch, // Use the exact match from the enum
+                      selectedUserId
+                    );
+
                   if (messages.success && messages.response) {
                     // Add clarity to the response about which users are included
-                    const userScope = selectedUserId ? `from user "${contacts.find(c => c.id === selectedUserId)?.name || 'Selected user'}"` : "from all users";
-                    responseContent = `Finding messages targeting vulnerability "${exactVulnerabilityMatch}" ${userScope}:\n\n` + 
-                                      formatMessages(messages.response, 'vulnerability');
+                    const userScope = selectedUserId
+                      ? `from user "${
+                          contacts.find((c) => c.id === selectedUserId)?.name ||
+                          "Selected user"
+                        }"`
+                      : "from all users";
+                    responseContent =
+                      `Finding messages targeting vulnerability "${exactVulnerabilityMatch}" ${userScope}:\n\n` +
+                      formatMessages(messages.response, "vulnerability");
                   } else {
-                    responseContent = `Error retrieving messages: ${messages.message || 'No messages found'}`;
+                    responseContent = `Error retrieving messages: ${
+                      messages.message || "No messages found"
+                    }`;
                   }
                 } catch (error) {
-                  responseContent = `Error: ${error.message || 'Could not fetch messages by vulnerability'}`;
+                  responseContent = `Error: ${
+                    error.message || "Could not fetch messages by vulnerability"
+                  }`;
                 }
               }
             }
             break;
 
           default:
-            responseContent = "Unknown command. Type /help for available commands.";
+            responseContent =
+              "Unknown command. Type /help for available commands.";
             break;
         }
       }
 
       // Add bot response to conversation
       const botResponse = {
-        id: Date.now().toString() + '-response',
+        id: Date.now().toString() + "-response",
         content: responseContent,
-        sender: 'statsbot',
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        sender: "statsbot",
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
       };
 
-      setConversationsMap(prevMap => {
-        const existingConvo = prevMap['statsbot'] || [];
+      setConversationsMap((prevMap) => {
+        const existingConvo = prevMap["statsbot"] || [];
         return {
           ...prevMap,
-          'statsbot': [...existingConvo, botResponse]
+          statsbot: [...existingConvo, botResponse],
         };
       });
 
       // Update StatsBot's last message in contacts
-      setContacts(prev => 
-        prev.map(contact => 
-          contact.id === 'statsbot' 
+      setContacts((prev) =>
+        prev.map((contact) =>
+          contact.id === "statsbot"
             ? {
                 ...contact,
                 lastMessage: `${cmd} command processed`,
-                time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+                time: new Date().toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
               }
             : contact
         )
       );
-
     } catch (error) {
-      console.error('Error processing StatsBot command:', error);
-      
+      console.error("Error processing StatsBot command:", error);
+
       // Add error message to conversation
       const errorMessage = {
-        id: Date.now().toString() + '-error',
-        content: `Error processing command: ${error.message || 'Unknown error'}`,
-        sender: 'statsbot',
-        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        id: Date.now().toString() + "-error",
+        content: `Error processing command: ${
+          error.message || "Unknown error"
+        }`,
+        sender: "statsbot",
+        timestamp: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
       };
 
-      setConversationsMap(prevMap => {
-        const existingConvo = prevMap['statsbot'] || [];
+      setConversationsMap((prevMap) => {
+        const existingConvo = prevMap["statsbot"] || [];
         return {
           ...prevMap,
-          'statsbot': [...existingConvo, errorMessage]
+          statsbot: [...existingConvo, errorMessage],
         };
       });
     } finally {
@@ -638,17 +764,16 @@ function ChatPage() {
   const handleSend = async () => {
     if (!input.trim() || !selectedContact) return;
 
-
     const timestamp = new Date().toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
     });
 
     const contactId = selectedContact.id;
-    
+
     // Special handling for StatsBot
-    if (contactId === 'statsbot') {
-      if (input.startsWith('/')) {
+    if (contactId === "statsbot") {
+      if (input.startsWith("/")) {
         await processStatsBotCommand(input);
       } else {
         // For non-command messages to StatsBot
@@ -664,28 +789,72 @@ function ChatPage() {
           const existingConvo = prevMap[contactId] || [];
           return {
             ...prevMap,
-            [contactId]: [...existingConvo, userMessage]
+            [contactId]: [...existingConvo, userMessage],
           };
         });
 
-        // Add bot response to conversation
-        const botResponse = {
-          id: Date.now().toString() + '-response',
-          content: "I can only respond to commands that start with /. Type /help to see available commands.",
-          sender: 'statsbot',
-          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        };
+        try {
+          // Call the simpleChat API
+          setInput("");
+          const response = await agentApi.simpleChat(
+            currentUser.user_id,
+            input
+          );
 
-        setConversationsMap(prevMap => {
-          const existingConvo = prevMap[contactId] || [];
-          return {
-            ...prevMap,
-            [contactId]: [...existingConvo, botResponse]
+          console.log(response);
+          const cleanedResponse = response.text
+            .replace(/\r\n/g, "\n") // Normalize line endings
+            .replace(/\n{3,}/g, "\n\n") // Limit to max 2 newlines in a row
+            .replace(/[ \t]+\n/g, "\n") // Remove trailing spaces before newline
+            .trim();
+
+          // Add bot response to conversation
+          const botResponse = {
+            id: Date.now().toString() + "-response",
+            content: cleanedResponse || "No response received from the server.",
+            sender: "statsbot",
+            timestamp: new Date().toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+            tool_calls: response.tool_calls || [],
           };
-        });
+
+          console.log("Bot response:", botResponse);
+
+          setConversationsMap((prevMap) => {
+            const existingConvo = prevMap[contactId] || [];
+            return {
+              ...prevMap,
+              [contactId]: [...existingConvo, botResponse],
+            };
+          });
+        } catch (error) {
+          console.error("Error calling simpleChat API:", error);
+
+          // Add error message to conversation
+          const errorMessage = {
+            id: Date.now().toString() + "-error",
+            content: `Error: ${
+              error.message || "Failed to process your message."
+            }`,
+            sender: "statsbot",
+            timestamp: new Date().toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            }),
+          };
+
+          setConversationsMap((prevMap) => {
+            const existingConvo = prevMap[contactId] || [];
+            return {
+              ...prevMap,
+              [contactId]: [...existingConvo, errorMessage],
+            };
+          });
+        }
       }
-      
-      setInput("");
+
       return;
     }
 
@@ -749,10 +918,9 @@ function ChatPage() {
     : [];
 
   const handleDashboardClick = () => {
-    console.log('Dashboard button clicked');
-    navigate('/dashboard');
+    console.log("Dashboard button clicked");
+    navigate("/dashboard");
   };
-
 
   return (
     <div className="h-screen flex">

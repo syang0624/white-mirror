@@ -9,6 +9,7 @@ import {
 import { ChatInput } from "@/components/ui/chat/chat-input";
 import { Phone, Video, MoreVertical, SendHorizontal, AlertTriangle } from "lucide-react";
 import ChatFooter from "./ChatFooter";
+import ToolCallChips from "@/components/ui/ToolCallChips";
 
 import ChatHeader from "./ChatHeader";
 import { useEffect, useRef } from "react";
@@ -46,7 +47,7 @@ function ChatArea({
             <div key={message.id} className="flex flex-col">
               <ChatBubble
                 variant={message.sender === "me" ? "sent" : "received"}
-                className={`max-w-[60%]`}
+                className="max-w-[60%]"
               >
                 <div className="flex flex-col">
                   <ChatBubbleMessage 
@@ -58,6 +59,13 @@ function ChatArea({
                   <ChatBubbleTimestamp timestamp={message.timestamp} />
                 </div>
               </ChatBubble>
+              
+              {/* Display tool call chips outside the ChatBubble */}
+              {message.tool_calls && message.tool_calls.length > 0 && (
+                <div className={`mt-1 ${message.sender === "me" ? "self-end" : "self-start"}`} style={{maxWidth: "80%"}}>
+                  <ToolCallChips tool_calls={message.tool_calls} />
+                </div>
+              )}
               
               {message.is_manipulative && (
                 <div className="mt-1 mb-2 py-2 px-3 max-w-[80%] ml-auto mr-auto bg-amber-50 border border-amber-200 rounded-md">
