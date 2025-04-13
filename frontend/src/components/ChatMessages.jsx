@@ -1,4 +1,9 @@
-import { ChatBubble, ChatBubbleMessage, ChatBubbleTimestamp } from "@/components/ui/chat/chat-bubble";
+import {
+  ChatBubble,
+  ChatBubbleMessage,
+  ChatBubbleTimestamp,
+} from "@/components/ui/chat/chat-bubble";
+import ToolCallChips from "@/components/ui/ToolCallChips";
 
 function ChatMessages({ currentMessages, isLoading }) {
   return (
@@ -8,11 +13,17 @@ function ChatMessages({ currentMessages, isLoading }) {
           <ChatBubble
             key={message.id}
             variant={message.sender === "me" ? "sent" : "received"}
-            className="max-w-[60%]"
+            className="max-w-[85%]"
           >
             <div className="flex flex-col">
-              <ChatBubbleMessage>{message.content}</ChatBubbleMessage>
+              <ChatBubbleMessage>
+                {message.content}
+              </ChatBubbleMessage>
+
               <ChatBubbleTimestamp timestamp={message.timestamp} />
+              {message.tool_calls && message.tool_calls.length > 0 && (
+              <ToolCallChips tool_calls={message.tool_calls} />
+              )}
             </div>
           </ChatBubble>
         ))}
