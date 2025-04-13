@@ -1,7 +1,3 @@
-Absolutely! Here’s an expanded and more technically detailed version of your `README.md` focusing on **how the classification works**, and **how to set up the environment for training and inference**.
-
----
-
 # Manipulative Message Classifier
 
 A Python-based machine learning pipeline for detecting manipulative language in dialogue. This model not only identifies whether a message is manipulative, but also classifies the techniques used and the psychological vulnerabilities being targeted.
@@ -73,7 +69,7 @@ pip install -r requirements.txt
 #### Option B: Manually
 
 ```bash
-pip install pandas numpy scikit-learn joblib
+pip install pandas numpy scikit-learn
 ```
 
 ---
@@ -154,7 +150,7 @@ Saved model includes:
 -   Trained pipelines (binary, technique, vulnerability)
 -   Label lists (for inverse mapping)
 
-Uses `joblib` for efficient serialization of large objects.
+Uses `pkl` for efficient serialization of large objects.
 
 ---
 
