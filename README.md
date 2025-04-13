@@ -68,7 +68,7 @@ white-mirror/
     -   Identification of psychological vulnerabilities like Dependency, Naivete, Low Self-esteem
 
 -   **LLM Agent**
-    - Integrated Langgraph-based Agent that receives user question and use tool-calling (function-calling) to either query the postgresdb
+    - Integrated Langgraph-based Agent that receives user question and use tool-calling (function-calling) to either query the postgresdb or use Perplexity for web search for informed response.
 
 ## Installation
 
