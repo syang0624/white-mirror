@@ -5,8 +5,10 @@ import {
   ChatBubbleMessage,
   ChatBubbleTimestamp,
 } from "@/components/ui/chat/chat-bubble";
+
 import { ChatInput } from "@/components/ui/chat/chat-input";
 import { Phone, Video, MoreVertical, SendHorizontal, AlertTriangle } from "lucide-react";
+import ChatFooter from "./ChatFooter";
 
 import ChatHeader from "./ChatHeader";
 import { useEffect, useRef } from "react";
@@ -86,25 +88,15 @@ function ChatArea({
         </div>
       </div>
 
-      {/* Chat input */}
-      <footer className="p-4 border-t border-gray-200">
-        <div className="flex items-center space-x-2">
-          <ChatInput
-            placeholder="Type a message..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <Button
-            variant="default"
-            size="icon"
-            onClick={handleSend}
-            disabled={!input.trim() || isLoading}
-          >
-            <SendHorizontal className="h-4 w-4" />
-          </Button>
-        </div>
-      </footer>
+      {/* Chat input - Using our enhanced ChatFooter component */}
+      <ChatFooter
+        input={input}
+        setInput={setInput}
+        handleSend={handleSend}
+        handleKeyDown={handleKeyDown}
+        isLoading={isLoading}
+        currentContact={currentContact}
+      />
     </main>
   );
 }

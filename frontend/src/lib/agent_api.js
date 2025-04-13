@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 // Base API instance with common config
 const api = axios.create({
@@ -71,6 +71,7 @@ export const agentApi = {
    * @param {string} contactName - Optional name of the contact for more natural query
    * @returns {Promise<object>} - Response with analysis of the specific person
    */
+  
   analyzeContact: async (userId, contactId, contactName = null) => {
     const nameQuery = contactName ? `${contactName} (${contactId})` : contactId;
     try {

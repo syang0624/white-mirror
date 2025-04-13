@@ -1,6 +1,9 @@
-import { Settings, Search, User } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Settings, Search, User, Bot } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { statisticsApi, ManipulativeTechniques, Vulnerabilities } from '@/lib/statistics_api'
+
 
 const Sidebar = ({ 
   contacts, 
@@ -11,11 +14,12 @@ const Sidebar = ({
   currentUser,
   onDashboardClick
 }) => {
-  // Filter contacts based on search query
+
+  // Filter contacts based on search query directly
   const filteredContacts = contacts.filter(contact => 
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
-  )
-
+  );
+  
   return (
     <aside className="w-1/4 border-r border-gray-200 bg-gray-50 flex flex-col">
       <div className="p-4 border-b border-gray-200 flex items-center justify-between">
@@ -50,7 +54,12 @@ const Sidebar = ({
             >
               <div className="relative">
                 <Avatar className="h-12 w-12">
-                  {contact.avatar ? (
+                  {contact.isBot ? (
+                    <AvatarFallback className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
+                      <Bot size={24} />
+                    </AvatarFallback>
+                  ) : contact.avatar ? (
+
                     <AvatarImage src={contact.avatar} alt={contact.name} />
                   ) : (
                     <AvatarFallback>
@@ -65,10 +74,20 @@ const Sidebar = ({
               
               <div className="ml-3 flex-1">
                 <div className="flex justify-between">
-                  <p className="font-medium">{contact.name}</p>
+                  <p className={`font-medium ${contact.isBot ? 'text-purple-600' : ''}`}>{contact.name}</p>
                   <span className="text-xs text-gray-500">{contact.time}</span>
                 </div>
-                <p className="text-sm text-gray-500 truncate">{contact.lastMessage}</p>
+                <p className="text-sm text-gray-500 truncate">
+                  {contact.isBot ? (
+                    <span className="flex items-center">
+                      <Bot size={14} className="mr-1" />
+                      {contact.lastMessage}
+                    </span>
+                  ) : (
+                    contact.lastMessage
+                  )}
+                </p>
+
               </div>
             </div>
           ))
