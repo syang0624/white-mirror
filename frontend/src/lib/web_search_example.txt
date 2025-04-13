@@ -1,0 +1,297 @@
+===== Test 1: 'What are the most common manipulation techniques used in relationships?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "What are the most common manipulation techniques used in relationships?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Manipulation in relationships involves various tactics used by individuals to influence and control others. Here are some of the most common techniques:\n\n- **Gaslighting**: Making someone question their reality, sanity, or memory to gain control [1][2][3].\n- **Triangulation**: Involving a third party to sway arguments or create jealousy [1][5].\n- **Love Bombing**: Overwhelming someone with affection to build trust quickly [1][2][3].\n- **Passive-Aggression**: Expressing negative feelings indirectly through behaviors like sarcasm [1][2].\n- **Emotional Blackmail**: Threatening to withdraw love or support unless demands are met [3].\n- **Playing on Insecurities**: Exploiting personal weaknesses to gain control [5].\n- **The Silent Treatment**: Withholding communication as a form of punishment [1][3].\n- **Generalizations and Exaggerations**: Making broad statements to influence perceptions [1][2].\n\nThese tactics can lead to toxic relationships and emotional distress. Recognizing them is crucial for maintaining healthy relationships and personal well-being.Common manipulation techniques used in relationships include:\n\n1. **Gaslighting**: This involves making someone doubt their own reality, memory, or perceptions, often leading them to question their sanity.\n\n2. **Triangulation**: This tactic involves introducing a third party into conflicts to sway opinions, create jealousy, or shift blame.\n\n3. **Love Bombing**: This is the act of overwhelming someone with affection and attention to quickly build trust and dependence.\n\n4. **Passive-Aggression**: Expressing negative feelings indirectly, often through sarcasm or backhanded comments, rather than addressing issues openly.\n\n5. **Emotional Blackmail**: Threatening to withdraw love, support, or affection unless demands are met, often to coerce compliance.\n\n6. **Playing on Insecurities**: Exploiting a partner's vulnerabilities or weaknesses to manipulate their feelings or decisions.\n\n7. **The Silent Treatment**: Withholding communication as a form of punishment or control, making the other person feel isolated.\n\n8. **Generalizations and Exaggerations**: Using broad statements or exaggerations to influence perceptions and arguments.\n\nRecognizing these tactics is crucial for maintaining healthy relationships, as they can lead to emotional distress and toxic dynamics. If you suspect you're experiencing manipulation, it's important to seek support or consider discussing these patterns openly with your partner.",
+  "tool_calls": [
+    {
+      "id": "call_bZTMI4qJC6WNwUrXAPYhPcR6",
+      "name": "web_search",
+      "args": "{\"query\":\"What are the most common manipulation techniques used in relationships?\"}",
+      "result": "Manipulation in relationships involves various tactics used by individuals to influence and control others. Here are some of the most common techniques:\n\n- **Gaslighting**: Making someone question their reality, sanity, or memory to gain control [1][2][3].\n- **Triangulation**: Involving a third party to sway arguments or create jealousy [1][5].\n- **Love Bombing**: Overwhelming someone with affection to build trust quickly [1][2][3].\n- **Passive-Aggression**: Expressing negative feelings indirectly through behaviors like sarcasm [1][2].\n- **Emotional Blackmail**: Threatening to withdraw love or support unless demands are met [3].\n- **Playing on Insecurities**: Exploiting personal weaknesses to gain control [5].\n- **The Silent Treatment**: Withholding communication as a form of punishment [1][3].\n- **Generalizations and Exaggerations**: Making broad statements to influence perceptions [1][2].\n\nThese tactics can lead to toxic relationships and emotional distress. Recognizing them is crucial for maintaining healthy relationships and personal well-being."
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+✅ web_search was used (1 times)
+
+Web search query: What are the most common manipulation techniques used in relationships?
+Result preview: Manipulation in relationships involves various tactics used by individuals to influence and control others. Here are some of the most common technique...
+
+Response text preview:
+Manipulation in relationships involves various tactics used by individuals to influence and control others. Here are some of the most common techniques:
+
+- **Gaslighting**: Making someone question their reality, sanity, or memory to gain control [1][2][3].
+- **Triangulation**: Involving a third part...
+
+
+===== Test 2: 'How can I identify if someone is gaslighting me?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "How can I identify if someone is gaslighting me?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Identifying gaslighting involves recognizing specific behaviors and techniques used by an abuser to manipulate a victim's perception of reality. Here are key signs and examples to help identify gaslighting:\n\n## Signs of Gaslighting\n\n1. **Withholding**: The gaslighter may refuse to acknowledge or listen to your perspective.\n2. **Lying**: They tell outright lies, even when confronted with evidence.\n3. **Countering**: They question your memory or version of events.\n4. **Denial**: They deny previous statements or actions.\n5. **Diverting**: They change the subject to avoid discussing the issue.\n6. **Trivializing**: They downplay your feelings or concerns.\n\n## Examples of Gaslighting Phrases\n\n- \"You must be imagining things.\"\n- \"You're too sensitive.\"\n- \"I never said that.\"\n- \"You're lying, not me.\"\n\n## Effects of Gaslighting\n\nGaslighting can lead to confusion, self-doubt, anxiety, depression, and a decline in self-esteem. It is important to recognize these signs early to protect your mental health and maintain healthy relationships.\n\n## Steps to Counter Gaslighting\n\n1. **Stay Calm**: Maintain your composure when confronted with gaslighting tactics.\n2. **Document Events**: Keep a record of events to counter false narratives.\n3. **Seek Support**: Talk to trusted friends or family about your experiences.\n4. **Set Boundaries**: Clearly communicate what you will and will not tolerate.\n5. **Educate Yourself**: Learn about gaslighting to better recognize it[1][2][3][4].Gaslighting can be a subtle but harmful form of manipulation. Here are some key signs to help you identify if someone is gaslighting you:\n\n### Signs of Gaslighting:\n\n1. **Withholding**: The person refuses to listen to your perspective or acknowledge your feelings.\n2. **Lying**: They tell blatant lies, even when you have proof of the truth.\n3. **Countering**: They question your memory or how you perceive events, making you doubt your experiences.\n4. **Denial**: They deny having said or done things, even if you remember them clearly.\n5. **Diverting**: They avoid the topic and change the subject when you try to discuss your concerns.\n6. **Trivializing**: They belittle your feelings or dismiss your concerns as unimportant.\n\n### Common Phrases Used in Gaslighting:\n\n- \"You must be imagining things.\"\n- \"You're too sensitive.\"\n- \"I never said that.\"\n- \"You're lying, not me.\"\n\n### Effects of Gaslighting:\n\nGaslighting can lead to significant confusion, self-doubt, anxiety, depression, and a decline in self-esteem. Recognizing these signs early is crucial for your mental health and well-being.\n\n### Steps to Counter Gaslighting:\n\n1. **Stay Calm**: Try to maintain your composure when confronted with gaslighting tactics.\n2. **Document Events**: Keep a record of interactions and events to counter false narratives.\n3. **Seek Support**: Talk to trusted friends or family about your experiences for validation.\n4. **Set Boundaries**: Clearly communicate what behaviors you will not tolerate.\n5. **Educate Yourself**: Learn more about gaslighting to better recognize and understand it.\n\nIf you suspect you're experiencing gaslighting in your relationships, it's essential to take these signs seriously and consider seeking support from professionals or trusted individuals in your life.",
+  "tool_calls": [
+    {
+      "id": "call_vgc8spVBcc7QwttiMWSwbmeS",
+      "name": "web_search",
+      "args": "{\"query\":\"How to identify gaslighting\"}",
+      "result": "Identifying gaslighting involves recognizing specific behaviors and techniques used by an abuser to manipulate a victim's perception of reality. Here are key signs and examples to help identify gaslighting:\n\n## Signs of Gaslighting\n\n1. **Withholding**: The gaslighter may refuse to acknowledge or listen to your perspective.\n2. **Lying**: They tell outright lies, even when confronted with evidence.\n3. **Countering**: They question your memory or version of events.\n4. **Denial**: They deny previous statements or actions.\n5. **Diverting**: They change the subject to avoid discussing the issue.\n6. **Trivializing**: They downplay your feelings or concerns.\n\n## Examples of Gaslighting Phrases\n\n- \"You must be imagining things.\"\n- \"You're too sensitive.\"\n- \"I never said that.\"\n- \"You're lying, not me.\"\n\n## Effects of Gaslighting\n\nGaslighting can lead to confusion, self-doubt, anxiety, depression, and a decline in self-esteem. It is important to recognize these signs early to protect your mental health and maintain healthy relationships.\n\n## Steps to Counter Gaslighting\n\n1. **Stay Calm**: Maintain your composure when confronted with gaslighting tactics.\n2. **Document Events**: Keep a record of events to counter false narratives.\n3. **Seek Support**: Talk to trusted friends or family about your experiences.\n4. **Set Boundaries**: Clearly communicate what you will and will not tolerate.\n5. **Educate Yourself**: Learn about gaslighting to better recognize it[1][2][3][4]."
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+✅ web_search was used (1 times)
+
+Web search query: How to identify gaslighting
+Result preview: Identifying gaslighting involves recognizing specific behaviors and techniques used by an abuser to manipulate a victim's perception of reality. Here ...
+
+Response text preview:
+Identifying gaslighting involves recognizing specific behaviors and techniques used by an abuser to manipulate a victim's perception of reality. Here are key signs and examples to help identify gaslighting:
+
+## Signs of Gaslighting
+
+1. **Withholding**: The gaslighter may refuse to acknowledge or lis...
+
+
+===== Test 3: 'What resources are available for people dealing with manipulative relationships?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "What resources are available for people dealing with manipulative relationships?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "For individuals experiencing manipulation, several resources are available to help them manage and counteract these situations:\n\n1. **Professional Support**: Seeking guidance from therapists or counselors can provide strategies to effectively manage manipulation. They offer valuable insights and coping mechanisms to protect mental health[1][3][4].\n\n2. **Online Resources and Workshops**: Websites and online platforms offer educational materials and workshops to learn about manipulation tactics and how to build resilience against them[3][5].\n\n3. **Support Networks**: Building a strong support system of trusted friends, family, or support groups can provide emotional support and help individuals gain a broader perspective on their situation[1][3].\n\n4. **Self-Care and Emotional Intelligence**: Engaging in self-care practices and developing emotional intelligence can enhance resilience against manipulation by improving self-awareness and interpersonal skills[1][4].\n\n5. **Documentation and Record-Keeping**: Keeping notes or journals about manipulative interactions can help clarify situations and prevent further manipulation[5].If you're dealing with manipulative relationships, there are several resources available that can help you manage and counteract these situations:\n\n1. **Professional Support**: Seeking guidance from therapists or counselors can provide strategies to effectively handle manipulation. They can offer valuable insights and coping mechanisms to protect your mental health.\n\n2. **Online Resources and Workshops**: Various websites and online platforms provide educational materials and workshops focused on understanding manipulation tactics and building resilience against them.\n\n3. **Support Networks**: Establishing a strong support system of trusted friends, family, or support groups can offer emotional backing and help you gain a broader perspective on your situation.\n\n4. **Self-Care and Emotional Intelligence**: Engaging in self-care practices and developing emotional intelligence can enhance your resilience against manipulation by improving self-awareness and interpersonal skills.\n\n5. **Documentation and Record-Keeping**: Keeping notes or journals about manipulative interactions can help clarify situations and prevent further manipulation.\n\nThese resources can empower you to recognize manipulation and respond in a healthier way. If you feel overwhelmed, reaching out for professional help can be a significant first step.",
+  "tool_calls": [
+    {
+      "id": "call_4umDOVEp56L35pSJa9bTP2CO",
+      "name": "web_search",
+      "args": "{\"query\":\"What resources are available for people experiencing manipulation?\"}",
+      "result": "For individuals experiencing manipulation, several resources are available to help them manage and counteract these situations:\n\n1. **Professional Support**: Seeking guidance from therapists or counselors can provide strategies to effectively manage manipulation. They offer valuable insights and coping mechanisms to protect mental health[1][3][4].\n\n2. **Online Resources and Workshops**: Websites and online platforms offer educational materials and workshops to learn about manipulation tactics and how to build resilience against them[3][5].\n\n3. **Support Networks**: Building a strong support system of trusted friends, family, or support groups can provide emotional support and help individuals gain a broader perspective on their situation[1][3].\n\n4. **Self-Care and Emotional Intelligence**: Engaging in self-care practices and developing emotional intelligence can enhance resilience against manipulation by improving self-awareness and interpersonal skills[1][4].\n\n5. **Documentation and Record-Keeping**: Keeping notes or journals about manipulative interactions can help clarify situations and prevent further manipulation[5]."
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+✅ web_search was used (1 times)
+
+Web search query: What resources are available for people experiencing manipulation?
+Result preview: For individuals experiencing manipulation, several resources are available to help them manage and counteract these situations:
+
+1. **Professional Sup...
+
+Response text preview:
+For individuals experiencing manipulation, several resources are available to help them manage and counteract these situations:
+
+1. **Professional Support**: Seeking guidance from therapists or counselors can provide strategies to effectively manage manipulation. They offer valuable insights and cop...
+
+
+===== Test 4: 'What's the difference between healthy persuasion and manipulation?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "What's the difference between healthy persuasion and manipulation?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "## Difference Between Healthy Persuasion and Manipulation\n\nHealthy persuasion and manipulation are distinct concepts that involve influencing others, but they differ in intent, method, and outcome.\n\n### Healthy Persuasion\n- **Intent**: Persuasion aims to genuinely benefit the person being influenced, often by presenting logical arguments or appealing to emotions in a way that respects the individual's autonomy.\n- **Method**: It involves using reasoning, framing arguments, and providing evidence to help others make informed decisions. Persuasion respects the other person's right to accept or reject the proposed idea.\n- **Outcome**: Persuasion can lead to positive change and is considered a beneficial form of influence, as it preserves the individual's free choice and decision-making capacity[1][3].\n\n### Manipulation\n- **Intent**: Manipulation is driven by self-serving intentions, often disregarding the well-being of the person being influenced. It can involve deceit, coercion, or exploiting emotions to achieve a desired outcome.\n- **Method**: Manipulation may involve withholding or distorting information, using guilt, fear, or pressure to control decisions. It undermines the individual's autonomy and decision-making abilities.\n- **Outcome**: Manipulation can result in harm to the manipulated individual, as it exploits their vulnerabilities and limits their freedom of choice[3][5].\n\nIn summary, while both persuasion and manipulation aim to influence others, persuasion does so ethically and respectfully, whereas manipulation involves unethical tactics that can harm the influenced individual.The difference between healthy persuasion and manipulation lies primarily in intent, method, and outcome:\n\n### Healthy Persuasion\n- **Intent**: Healthy persuasion aims to genuinely benefit the person being influenced. It's about helping someone see a perspective or make a decision that is in their best interest.\n- **Method**: It employs logical arguments, emotional appeals, and facts while respecting the individual's autonomy. The person being persuaded retains the right to accept or reject the proposal.\n- **Outcome**: The result is often positive, leading to informed decisions and constructive changes, while preserving the individual's freedom to choose.\n\n### Manipulation\n- **Intent**: Manipulation is typically self-serving and often disregards the well-being of the individual being influenced. The goal is to achieve a desired outcome at the expense of the other person's interests.\n- **Method**: It may involve deceit, coercion, or exploiting emotions (like guilt or fear) to control decisions. This undermines the individual's autonomy and decision-making abilities.\n- **Outcome**: Manipulation can cause harm to the individual being manipulated, as it often exploits their vulnerabilities and limits their freedom of choice.\n\nIn essence, while both persuasion and manipulation seek to influence others, persuasion is ethical and respectful, whereas manipulation uses unethical tactics that can lead to harm.",
+  "tool_calls": [
+    {
+      "id": "call_UDv76aK7WMc2vkmYIlwpP8Cb",
+      "name": "web_search",
+      "args": "{\"query\":\"difference between healthy persuasion and manipulation\"}",
+      "result": "## Difference Between Healthy Persuasion and Manipulation\n\nHealthy persuasion and manipulation are distinct concepts that involve influencing others, but they differ in intent, method, and outcome.\n\n### Healthy Persuasion\n- **Intent**: Persuasion aims to genuinely benefit the person being influenced, often by presenting logical arguments or appealing to emotions in a way that respects the individual's autonomy.\n- **Method**: It involves using reasoning, framing arguments, and providing evidence to help others make informed decisions. Persuasion respects the other person's right to accept or reject the proposed idea.\n- **Outcome**: Persuasion can lead to positive change and is considered a beneficial form of influence, as it preserves the individual's free choice and decision-making capacity[1][3].\n\n### Manipulation\n- **Intent**: Manipulation is driven by self-serving intentions, often disregarding the well-being of the person being influenced. It can involve deceit, coercion, or exploiting emotions to achieve a desired outcome.\n- **Method**: Manipulation may involve withholding or distorting information, using guilt, fear, or pressure to control decisions. It undermines the individual's autonomy and decision-making abilities.\n- **Outcome**: Manipulation can result in harm to the manipulated individual, as it exploits their vulnerabilities and limits their freedom of choice[3][5].\n\nIn summary, while both persuasion and manipulation aim to influence others, persuasion does so ethically and respectfully, whereas manipulation involves unethical tactics that can harm the influenced individual."
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+✅ web_search was used (1 times)
+
+Web search query: difference between healthy persuasion and manipulation
+Result preview: ## Difference Between Healthy Persuasion and Manipulation
+
+Healthy persuasion and manipulation are distinct concepts that involve influencing others, ...
+
+Response text preview:
+## Difference Between Healthy Persuasion and Manipulation
+
+Healthy persuasion and manipulation are distinct concepts that involve influencing others, but they differ in intent, method, and outcome.
+
+### Healthy Persuasion
+- **Intent**: Persuasion aims to genuinely benefit the person being influenced...
+
+
+===== Test 5: 'How do manipulators typically respond when confronted?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "How do manipulators typically respond when confronted?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "When confronted, manipulators often respond in ways designed to maintain controlWhen confronted, manipulators often employ several tactics to deflect blame or maintain control over the and avoid situation. Here are some common responses:\n\n accountability. Here are some typical responses:\n\n1. **Denial and Gaslighting**:1. They may **Den deny anyial and wrongdoing, Feign distort realitying Innocence**:, or Manipulators make the may deny victim question any wrongdoing their own or pretend perception of to be unaware of the situation, often acting surprised or ind events[2][3].\n\n2. **Deflection**: Manipulators might divert attention from their actionsignant to make the accuser doubt their by changing the subject or accusing others[4].\n\n3. **Victim Playing**: They may portray perceptions[2][5].\n\n themselves as victims to garner sympathy and shift blame[3][4].\n\n4. **Aggression or Passive-Aggression**: Some manipulators become aggressive or use2. **Gaslighting**: They might distort reality to make the victim question passive-aggressive tactics to intimidate or undermine the person their own confronting them[4].\n\n5 memory or. ** sanity,Retreat claiming that or Silence the alleged**: Manip behavior never occurred[5].\n\n3. **Blame Shifting**: Manipulators may redirect blame onto others orulators may retreat from the situation the acc or use silence as a form of emotional blackmail[5]. \n\nIt's crucial to remain calm, assertive, and firm inuser, making excuses for their actions or portraying themselves as victims setting boundaries when dealing with manipulative behavior[5].[2][5].\n\n4. **Emotional Manipulation**: They could use guilt, anger, or self-pity to manipulate emotions and shift the focus away from their behavior[3][5].\n\n5. **Minimization**: Manipulators may downplay the severity of their actions, suggesting that they were minor or justified[5].\n\nRecognizing these tactics is crucial for maintaining healthy boundaries and effectively addressing manipulative behavior.When confronted, manipulators typically respond in ways designed to maintain control and avoid accountability. Here are some common tactics they might use:\n\n1. **Denial and Gaslighting**: They may outright deny any wrongdoing or distort reality, making the victim question their own perception of events.\n\n2. **Deflection**: Manipulators often deflect blame by changing the subject or redirecting attention to the accuser, sometimes accusing them instead.\n\n3. **Playing the Victim**: They may portray themselves as victims to garner sympathy and shift blame away from themselves.\n\n4. **Aggression or Passive-Aggression**: Some manipulators might respond with anger or passive-aggressive behavior to intimidate or undermine the person confronting them.\n\n5. **Retreat or Silence**: They might withdraw from the conversation or use silence as a form of emotional manipulation, making the accuser feel responsible for the conflict.\n\n6. **Minimization**: Manipulators often downplay their actions, suggesting that what they did was minor or justified.\n\nRecognizing these responses is crucial for maintaining healthy boundaries and effectively addressing manipulative behavior. It's important to stay calm and assertive when dealing with these tactics.",
+  "tool_calls": [
+    {
+      "id": "call_5yXcbGOXu0P5uzs9eprZd9zk",
+      "name": "web_search",
+      "args": "{\"query\": \"How do manipulators typically respond when confronted?\"}",
+      "result": "When confronted, manipulators often respond in ways designed to maintain control and avoid accountability. Here are some typical responses:\n\n1. **Denial and Gaslighting**: They may deny any wrongdoing, distort reality, or make the victim question their own perception of events[2][3].\n\n2. **Deflection**: Manipulators might divert attention from their actions by changing the subject or accusing others[4].\n\n3. **Victim Playing**: They may portray themselves as victims to garner sympathy and shift blame[3][4].\n\n4. **Aggression or Passive-Aggression**: Some manipulators become aggressive or use passive-aggressive tactics to intimidate or undermine the person confronting them[4].\n\n5. **Retreat or Silence**: Manipulators may retreat from the situation or use silence as a form of emotional blackmail[5]. \n\nIt's crucial to remain calm, assertive, and firm in setting boundaries when dealing with manipulative behavior[5]."
+    },
+    {
+      "id": "call_asUgNs3tkLUyUZ27DoloU0bR",
+      "name": "web_search",
+      "args": "{\"query\": \"Common responses of manipulators when confronted\"}",
+      "result": "When confronted, manipulators often employ several tactics to deflect blame or maintain control over the situation. Here are some common responses:\n\n1. **Denial and Feigning Innocence**: Manipulators may deny any wrongdoing or pretend to be unaware of the situation, often acting surprised or indignant to make the accuser doubt their perceptions[2][5].\n\n2. **Gaslighting**: They might distort reality to make the victim question their own memory or sanity, claiming that the alleged behavior never occurred[5].\n\n3. **Blame Shifting**: Manipulators may redirect blame onto others or the accuser, making excuses for their actions or portraying themselves as victims[2][5].\n\n4. **Emotional Manipulation**: They could use guilt, anger, or self-pity to manipulate emotions and shift the focus away from their behavior[3][5].\n\n5. **Minimization**: Manipulators may downplay the severity of their actions, suggesting that they were minor or justified[5].\n\nRecognizing these tactics is crucial for maintaining healthy boundaries and effectively addressing manipulative behavior."
+    }
+  ]
+}
+
+✅ Tool calls made: 2
+✅ web_search was used (2 times)
+
+Web search query: How do manipulators typically respond when confronted?
+Result preview: When confronted, manipulators often respond in ways designed to maintain control and avoid accountability. Here are some typical responses:
+
+1. **Deni...
+
+Web search query: Common responses of manipulators when confronted
+Result preview: When confronted, manipulators often employ several tactics to deflect blame or maintain control over the situation. Here are some common responses:
+
+1...
+
+Response text preview:
+When confronted, manipulators often respond in ways designed to maintain controlWhen confronted, manipulators often employ several tactics to deflect blame or maintain control over the and avoid situation. Here are some common responses:
+
+ accountability. Here are some typical responses:
+
+1. **Denia...
+
+
+===== Test 6: 'What are some effective ways to respond to guilt-tripping?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "What are some effective ways to respond to guilt-tripping?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Responding to guilt-tripping effectively involves several steps that focus on maintaining emotional well-being and setting boundaries:\n\n1. **Recognize and Acknowledge the Guilt Trip**: Identify the manipulation tactic and understand its impact on you. Acknowledge your emotions and assess whether the guilt is justified or manipulated[1][2].\n\n2. **Self-Reflection**: Ask yourself questions like \"Did I act against my values?\" or \"Did I apologize if necessary?\" to determine if your guilt is genuine or induced[2].\n\n3. **Acknowledge Feelings and Communicate Openly**: Express how you feel to the person guilt-tripping you. Explain how their behavior affects you and suggest more direct communication[4].\n\n4. **Set Boundaries**: Clearly define what you are and are not willing to do. Enforce these boundaries to protect your mental health[4].\n\n5. **Seek Support**: If guilt-tripping persists, consider distancing yourself or seeking help from a therapist to manage emotions and develop coping strategies[2][4].Responding to guilt-tripping can be challenging, but there are effective strategies to help maintain your emotional well-being and set healthy boundaries. Here are some key approaches:\n\n1. **Recognize and Acknowledge the Guilt Trip**: The first step is to identify that you are being manipulated. Understanding that the guilt you're feeling may not be justified is crucial in regaining your emotional balance.\n\n2. **Self-Reflection**: Take a moment to ask yourself questions like, \"Did I act against my values?\" or \"Is my guilt warranted?\" This helps you assess whether the guilt is genuine or a result of manipulation.\n\n3. **Acknowledge Your Feelings and Communicate**: Express how the guilt-tripping makes you feel. Openly communicating your feelings can help the other person understand the impact of their behavior and may encourage more direct communication in the future.\n\n4. **Set Boundaries**: Clearly define what behaviors you will and won't accept. It's important to enforce these boundaries to protect your mental health and prevent further manipulation.\n\n5. **Seek Support**: If the guilt-tripping continues, consider distancing yourself from the person or seeking help from a therapist. They can provide guidance on managing your emotions and developing healthier communication strategies.\n\nBy following these steps, you can respond to guilt-tripping in a way that prioritizes your well-being and fosters healthier interactions.",
+  "tool_calls": [
+    {
+      "id": "call_CoxgoDaWvfTSA4cCmUQVwSK3",
+      "name": "web_search",
+      "args": "{\"query\":\"How to respond to guilt-tripping\"}",
+      "result": "Responding to guilt-tripping effectively involves several steps that focus on maintaining emotional well-being and setting boundaries:\n\n1. **Recognize and Acknowledge the Guilt Trip**: Identify the manipulation tactic and understand its impact on you. Acknowledge your emotions and assess whether the guilt is justified or manipulated[1][2].\n\n2. **Self-Reflection**: Ask yourself questions like \"Did I act against my values?\" or \"Did I apologize if necessary?\" to determine if your guilt is genuine or induced[2].\n\n3. **Acknowledge Feelings and Communicate Openly**: Express how you feel to the person guilt-tripping you. Explain how their behavior affects you and suggest more direct communication[4].\n\n4. **Set Boundaries**: Clearly define what you are and are not willing to do. Enforce these boundaries to protect your mental health[4].\n\n5. **Seek Support**: If guilt-tripping persists, consider distancing yourself or seeking help from a therapist to manage emotions and develop coping strategies[2][4]."
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+✅ web_search was used (1 times)
+
+Web search query: How to respond to guilt-tripping
+Result preview: Responding to guilt-tripping effectively involves several steps that focus on maintaining emotional well-being and setting boundaries:
+
+1. **Recognize...
+
+Response text preview:
+Responding to guilt-tripping effectively involves several steps that focus on maintaining emotional well-being and setting boundaries:
+
+1. **Recognize and Acknowledge the Guilt Trip**: Identify the manipulation tactic and understand its impact on you. Acknowledge your emotions and assess whether the...
+
+
+===== Test 7: 'Are there cultural differences in how manipulation is perceived?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Are there cultural differences in how manipulation is perceived?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Cultural differences play a significant role in how manipulation is perceived. Cultural norms and values can influence whether certain tactics are seen as manipulative or acceptable. For example, in more interdependent cultures like Asian societies, emotional manipulation tactics such as inducing guilt might be interpreted as expressions of love and care rather than hostility, whereas in more independent cultures like those in Western societies, such tactics might be viewed as manipulative[2]. Additionally, cultural variations in communication styles and emotional expression can affect how manipulation is perceived and addressed[3]. Understanding these cultural differences is crucial for developing culturally sensitive interventions and fostering healthy communication patterns across diverse cultural contexts.Yes, there are indeed cultural differences in how manipulation is perceived. Cultural norms and values significantly influence whether certain behaviors are seen as manipulative or acceptable. \n\nFor example, in interdependent cultures, such as many Asian societies, emotional manipulation tactics like inducing guilt may be interpreted as expressions of love and care. In these contexts, such behaviors can be viewed as ways of maintaining harmony and expressing concern for others rather than as manipulative tactics.\n\nConversely, in more independent cultures, such as those in many Western societies, similar tactics might be regarded as overtly manipulative or controlling. In these cultures, clear boundaries and direct communication are often valued, and emotional manipulation can be viewed negatively.\n\nFurthermore, cultural variations in communication styles and emotional expression can also impact how manipulation is recognized and addressed. Understanding these differences is crucial for fostering healthy communication patterns across diverse cultural contexts and developing culturally sensitive interventions.",
+  "tool_calls": [
+    {
+      "id": "call_WjqrnzPCjhrdq8w5hUVjjPqG",
+      "name": "web_search",
+      "args": "{\"query\":\"Are there cultural differences in how manipulation is perceived?\"}",
+      "result": "Cultural differences play a significant role in how manipulation is perceived. Cultural norms and values can influence whether certain tactics are seen as manipulative or acceptable. For example, in more interdependent cultures like Asian societies, emotional manipulation tactics such as inducing guilt might be interpreted as expressions of love and care rather than hostility, whereas in more independent cultures like those in Western societies, such tactics might be viewed as manipulative[2]. Additionally, cultural variations in communication styles and emotional expression can affect how manipulation is perceived and addressed[3]. Understanding these cultural differences is crucial for developing culturally sensitive interventions and fostering healthy communication patterns across diverse cultural contexts."
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+✅ web_search was used (1 times)
+
+Web search query: Are there cultural differences in how manipulation is perceived?
+Result preview: Cultural differences play a significant role in how manipulation is perceived. Cultural norms and values can influence whether certain tactics are see...
+
+Response text preview:
+Cultural differences play a significant role in how manipulation is perceived. Cultural norms and values can influence whether certain tactics are seen as manipulative or acceptable. For example, in more interdependent cultures like Asian societies, emotional manipulation tactics such as inducing gu...
+
+
+===== Test 8: 'What psychological theories explain manipulative behavior?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "What psychological theories explain manipulative behavior?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Several psychological theories and concepts explain manipulative behavior:\n\n1. **Machiavellianism**: This trait involves a tendency to be manipulative, deceitful, and disregard morality to achieve personal goals. Individuals high in Machiavellianism are emotionally detached and focused on personal gain, often using strategic and instrumental behavior[1][2].\n\n2. **Dark Psychology**: This term describes the study and application of psychological principles to manipulate or control others in harmful ways, often involving traits like Machiavellianism, psychopathy, and narcissism. Common tactics include guilt-tripping, gaslighting, and reverse psychology[5].\n\n3. **Social Influence Theory**: This theory, notably through Cialdini's principles of influence, explains how people are persuaded and manipulated through factors like reciprocity, authority, and social proof[2].\n\n4. **Game Theory Models**: Some models, like the Machiavellian game, analyze manipulation behavior using strategic thinking and optimization, illustrating how individuals may use tactics to influence others in strategic situations[1].\n\n5. **Motivation Manipulation**: This concept explores how manipulators engage unconscious motives to influence behavior, bypassing rational deliberation[3].Several psychological theories explain manipulative behavior:\n\n1. **Machiavellianism**: This trait characterizes individuals who are manipulative, deceitful, and often disregard morality to achieve their personal goals. People high in Machiavellianism tend to be emotionally detached and focused on personal gain, employing strategic and instrumental behavior to influence others.\n\n2. **Dark Psychology**: This field studies how psychological principles can be used to manipulate or control others, often involving traits like Machiavellianism, psychopathy, and narcissism. Common manipulative tactics in this realm include guilt-tripping, gaslighting, and reverse psychology.\n\n3. **Social Influence Theory**: This theory, particularly through Robert Cialdini's principles of influence, explains how individuals can be persuaded and manipulated through various factors such as reciprocity, authority, and social proof. These principles highlight how social dynamics can be leveraged for manipulation.\n\n4. **Game Theory Models**: Some models, like the Machiavellian game, analyze manipulative behavior through strategic thinking and optimization. These models illustrate how individuals might use tactics to influence others in strategic interactions.\n\n5. **Motivation Manipulation**: This concept delves into how manipulators engage unconscious motives to influence behavior, often bypassing rational deliberation. This approach emphasizes the psychological underpinnings of how certain triggers can lead individuals to succumb to manipulation.\n\nUnderstanding these theories can provide insight into the mechanisms behind manipulative behavior and help individuals recognize and respond to such tactics effectively.",
+  "tool_calls": [
+    {
+      "id": "call_fhg8IlpSOb4mEp0R9XeQ3tSZ",
+      "name": "web_search",
+      "args": "{\"query\":\"What psychological theories explain manipulative behavior?\"}",
+      "result": "Several psychological theories and concepts explain manipulative behavior:\n\n1. **Machiavellianism**: This trait involves a tendency to be manipulative, deceitful, and disregard morality to achieve personal goals. Individuals high in Machiavellianism are emotionally detached and focused on personal gain, often using strategic and instrumental behavior[1][2].\n\n2. **Dark Psychology**: This term describes the study and application of psychological principles to manipulate or control others in harmful ways, often involving traits like Machiavellianism, psychopathy, and narcissism. Common tactics include guilt-tripping, gaslighting, and reverse psychology[5].\n\n3. **Social Influence Theory**: This theory, notably through Cialdini's principles of influence, explains how people are persuaded and manipulated through factors like reciprocity, authority, and social proof[2].\n\n4. **Game Theory Models**: Some models, like the Machiavellian game, analyze manipulation behavior using strategic thinking and optimization, illustrating how individuals may use tactics to influence others in strategic situations[1].\n\n5. **Motivation Manipulation**: This concept explores how manipulators engage unconscious motives to influence behavior, bypassing rational deliberation[3]."
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+✅ web_search was used (1 times)
+
+Web search query: What psychological theories explain manipulative behavior?
+Result preview: Several psychological theories and concepts explain manipulative behavior:
+
+1. **Machiavellianism**: This trait involves a tendency to be manipulative...
+
+Response text preview:
+Several psychological theories and concepts explain manipulative behavior:
+
+1. **Machiavellianism**: This trait involves a tendency to be manipulative, deceitful, and disregard morality to achieve personal goals. Individuals high in Machiavellianism are emotionally detached and focused on personal g...
