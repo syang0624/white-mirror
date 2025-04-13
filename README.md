@@ -11,20 +11,20 @@ white-mirror/
 ├── README.md              # This file
 ├── backend/
 │   ├── alembic.ini        # Alembic configuration for database migrations
-│   ├── docker-compose.yml # Docker configuration for services
+│   ├── docker-compose.yml # Docker configuration for postgresql database
 │   ├── requirements.txt   # Python dependencies
-│   ├── setup.ps1          # PowerShell setup script
 │   ├── setup.sh           # Bash setup script
 │   ├── alembic/           # Database migration files
 │   ├── app/
 │   │   ├── main.py        # Application entry point
 │   │   ├── controllers/   # API endpoints and routes
-│   │   ├── core/          # Core application functionality
-│   │   ├── db/            # Database models and connections
 │   │   ├── dto/           # Data transfer objects
-│   │   ├── service/       # Business logic services
-│   │   │   └── classification/ # ML model for message analysis
+│   │   ├── core/          # Core application functionality (context and websocket)
+│   │   ├── db/            # Database models and connections
+│   │   ├── service/       # Service logic
+│   │   │   └── classification/ # ML model for message analysis for manipulation
 │   │   └── utils/         # Utility functions and testing tools
+│   │   ├── agent/         # Langgraph Agent Configurations
 │   └── data/              # Training data for ML models
 ├── frontend/
 │   ├── package.json       # Frontend dependencies
@@ -66,6 +66,9 @@ white-mirror/
     -   Sophisticated ML model for detecting manipulative communications
     -   Classification of multiple manipulation techniques including Persuasion/Seduction, Shaming, Rationalization, etc.
     -   Identification of psychological vulnerabilities like Dependency, Naivete, Low Self-esteem
+
+-   **LLM Agent**
+    - Integrated Langgraph-based Agent that receives user question and use tool-calling (function-calling) to either query the postgresdb
 
 ## Installation
 
