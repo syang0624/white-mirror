@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, Mail, Lock, UserPlus, LogIn } from "lucide-react";
-
 import { authApi } from "../lib/api";
 
 function Auth({ onLogin }) {
@@ -14,25 +13,25 @@ function Auth({ onLogin }) {
     e.preventDefault();
 
     try {
+      let res;
       let userData;
       if (isLogin) {
         console.log("Logging in with:", { email, password });
-        const res = await authApi.login(email, password);
+        res = await authApi.login(email, password);
         console.log("Login successful:", res);
         userData = res.response;
       } else {
         console.log("Registering with:", { name, email, password });
-        const res = await authApi.signup(email, name, password);
+        res = await authApi.signup(email, name, password);
         console.log("Signup successful:", res);
-        userData = res.response;
+        userData = res.response
       }
-      
-      // Store user data in localStorage
+
       if (userData) {
         localStorage.setItem("user", JSON.stringify(userData));
       }
-      
-      onLogin(true); // Call the onLogin callback after successful authentication
+
+      onLogin(true); // Mark user as logged in
     } catch (error) {
       console.error(
         "Authentication failed:",
