@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { statisticsApi, ManipulativeTechniques, Vulnerabilities } from '@/lib/statistics_api'
 
+
 const Sidebar = ({ 
   contacts, 
   selectedContact, 
@@ -13,6 +14,7 @@ const Sidebar = ({
   currentUser,
   onDashboardClick
 }) => {
+
   // Filter contacts based on search query directly
   const filteredContacts = contacts.filter(contact => 
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -57,6 +59,7 @@ const Sidebar = ({
                       <Bot size={24} />
                     </AvatarFallback>
                   ) : contact.avatar ? (
+
                     <AvatarImage src={contact.avatar} alt={contact.name} />
                   ) : (
                     <AvatarFallback>
@@ -84,6 +87,7 @@ const Sidebar = ({
                     contact.lastMessage
                   )}
                 </p>
+
               </div>
             </div>
           ))

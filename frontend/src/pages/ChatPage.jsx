@@ -5,6 +5,7 @@ import ChatArea from "../components/ChatArea";
 import { authApi, chatApi, ChatWebSocket } from "../lib/api";
 import { statisticsApi, ManipulativeTechniques, Vulnerabilities } from "../lib/statistics_api";
 
+
 function ChatPage() {
   const navigate = useNavigate();
   
@@ -33,6 +34,7 @@ function ChatPage() {
     time: 'Now',
     isBot: true
   });
+
 
   // debug useeffect
   useEffect(() => {
@@ -78,6 +80,7 @@ function ChatPage() {
         }
         return prevMap;
       });
+
     }
   }, [currentUser]);
 
@@ -101,6 +104,7 @@ function ChatPage() {
       if (selectedContact.id !== 'statsbot') {
         fetchMessages(selectedContact.id);
       }
+
     }
   }, [selectedContact, currentUser]);
 
@@ -128,6 +132,7 @@ function ChatPage() {
         // Select the first contact if none is selected
         if (!selectedContact) {
           setSelectedContact(statsBot);
+
         }
       }
     } catch (error) {
@@ -633,6 +638,7 @@ function ChatPage() {
   const handleSend = async () => {
     if (!input.trim() || !selectedContact) return;
 
+
     const timestamp = new Date().toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -683,7 +689,6 @@ function ChatPage() {
       return;
     }
 
-    // Normal message handling for regular contacts
     const userMessage = {
       id: Date.now().toString(),
       content: input,
@@ -747,6 +752,7 @@ function ChatPage() {
     console.log('Dashboard button clicked');
     navigate('/dashboard');
   };
+
 
   return (
     <div className="h-screen flex">

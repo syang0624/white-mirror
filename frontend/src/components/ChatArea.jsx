@@ -5,10 +5,11 @@ import {
   ChatBubbleMessage,
   ChatBubbleTimestamp,
 } from "@/components/ui/chat/chat-bubble";
-import { AlertTriangle } from "lucide-react";
+
+import { ChatInput } from "@/components/ui/chat/chat-input";
+import { Phone, Video, MoreVertical, SendHorizontal, AlertTriangle } from "lucide-react";
 
 import ChatHeader from "./ChatHeader";
-import ChatFooter from "./ChatFooter";
 import { useEffect, useRef } from "react";
 
 function ChatArea({

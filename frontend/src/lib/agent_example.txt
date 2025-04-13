@@ -1,0 +1,369 @@
+========== TESTING NATURAL LANGUAGE AGENT QUERIES ==========
+
+
+
+===== Test 1: 'Has anyone been making me feel guilty recently?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Has anyone been making me feel guilty recently?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "It appears that there has been some recent communication where you've been made to feel guilty, particularly through the use of the \"Playing Victim Role\" technique. Here's what I found:\n\n### User Analysis\n- **User**: Test User 8b6vkm\n- **Total Messages**: 10\n- **Manipulative Messages**: 6 (60% of their messages)\n- **Techniques Used**:\n  - **Playing Victim Role**: 2 messages\n  - **Persuasion or Seduction**: 2 messages\n  - **Playing Servant Role**: 2 messages\n  - **Rationalization**: 2 messages\n\n### Messages Reflecting \"Playing Victim Role\"\n1. **Message**: \"I know what's best for you, just trust me and do what I say.\"\n   - **Timestamp**: April 12, 2025\n   - **Techniques Involved**: Playing Servant Role, Playing Victim Role, Rationalization\n   - **Vulnerabilities Targeted**: Dependency, Naivete\n\n2. **Message**: \"I know what's best for you, just trust me and do what I say.\"\n   - **Timestamp**: April 12, 2025\n   - **Techniques Involved**: Playing Servant Role, Playing Victim Role, Rationalization\n   - **Vulnerabilities Targeted**: Dependency, Naivete\n\n### Insights\nThe messages suggest a pattern where this user is trying to exert influence over you by positioning themselves as having your best interests at heart, potentially making you feel guilty about not trusting their judgment. This can create a sense of dependency and pressure to comply with their wishes.\n\n### Advice\nIt might be helpful to:\n- **Set Boundaries**: Clearly communicate your own needs and decisions.\n- **Reflect on Trust**: Consider if this person's advice is genuinely in your best interest or if it serves their agenda.\n- **Seek Support**: Talking to a trusted friend or counselor can help you navigate these feelings and the relationship.\n\nIf you feel overwhelmed, don't hesitate to reach out for support from friends, family, or professionals. Your feelings and autonomy are important.",
+  "tool_calls": [
+    {
+      "id": "call_aIWkiwYiTa1ZaszPoPMKijBs",
+      "name": "analyze_all_users_with_user",
+      "args": "{}{\"technique\":\"Playing Victim Role\",\"selected_user_id\":\"249f0de2-390a-4549-a9f2-ddd2916fdfc9\"}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+It appears that there has been some recent communication where you've been made to feel guilty, particularly through the use of the "Playing Victim Role" technique. Here's what I found:
+
+### User Analysis
+- **User**: Test User 8b6vkm
+- **Total Messages**: 10
+- **Manipulative Messages**: 6 (60% of th...
+
+
+===== Test 2: 'Is someone trying to control me in our conversations?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Is someone trying to control me in our conversations?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "It appears that the person you are communicating with, identified as \"Test User 8b6vkm,\" has displayed manipulative communication patterns in your conversations. Here are some key points regarding their behavior:\n\n1. **Manipulative Techniques Used**:\n   - **Persuasion or Seduction**: 2 instances (33.3%)\n   - **Playing Servant Role**: 2 instances (33.3%)\n   - **Playing Victim Role**: 2 instances (33.3%)\n   - **Rationalization**: 2 instances (33.3%)\n\n2. **Vulnerabilities Targeted**:\n   - **Dependency**: 6 instances (100%)\n   - **Naivete**: 4 instances (66.7%)\n\n### Insights:\n\n- The use of **Persuasion or Seduction** suggests attempts to charm or influence you, which can create a sense of obligation or control.\n- The **Playing Servant Role** and **Playing Victim Role** techniques indicate a strategy of gaining sympathy or appearing overly helpful, which can manipulate your emotions and decisions.\n- Targeting the **Dependency** vulnerability indicates that they may be trying to create or exploit a reliance on them, which can be a significant form of control.\n\n### Advice:\n\n1. **Recognize Patterns**: Be aware of when you feel pressured or manipulated by their charm or sympathy. It\u2019s important to recognize these patterns.\n   \n2. **Set Boundaries**: Consider establishing clear boundaries in your conversations. This can help you maintain your autonomy and reduce feelings of obligation.\n\n3. **Reflect on Your Feelings**: Pay attention to how their messages make you feel. If you feel uncomfortable or controlled, it\u2019s okay to express that or take a step back.\n\n4. **Seek Support**: If you find these patterns concerning or if it impacts your well-being, consider discussing it with a trusted friend or a professional for further support.\n\nIf you would like to explore specific messages or techniques further, please let me know!",
+  "tool_calls": [
+    {
+      "id": "call_nzCP4IFIMbjrPlixIjz3A4dZ",
+      "name": "analyze_all_users_with_user",
+      "args": "{}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+It appears that the person you are communicating with, identified as "Test User 8b6vkm," has displayed manipulative communication patterns in your conversations. Here are some key points regarding their behavior:
+
+1. **Manipulative Techniques Used**:
+   - **Persuasion or Seduction**: 2 instances (33...
+
+
+===== Test 3: 'Do any of my contacts try to make me doubt myself?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Do any of my contacts try to make me doubt myself?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Based on the analysis of your contact, **Test User 8b6vkm**, there are some concerning patterns indicating potential manipulation techniques that may contribute to self-doubt. Here are the key findings:\n\n### Manipulative Techniques Used:\n1. **Rationalization**: This technique was identified in two messages. The content of these messages suggests an attempt to persuade you to trust their judgment over your own:\n   - **Message**: \"I know what's best for you, just trust me and do what I say.\"\n   - **Context**: This statement implies that your contact is positioning themselves as an authority on what is best for you, which can lead to feelings of doubt about your own decisions.\n\n### Vulnerabilities Targeted:\n- **Dependency**: Your contact's communication patterns indicate a targeting of dependency, which may make you more reliant on their opinions.\n- **Naivete**: There is also a suggestion of manipulating your perceived naivete, which could reinforce feelings of self-doubt.\n\n### Overall Analysis:\nYour contact has a high rate of manipulative messages (60% of total messages) focused on techniques that could foster dependency and undermine your self-confidence. While there were no direct messages identified that explicitly aimed to make you doubt yourself through techniques like \"Denial\" or \"Low self-esteem,\" the use of **Rationalization** can indirectly lead to self-doubt.\n\n### Advice:\n- **Trust Your Judgment**: It's important to remind yourself that your judgments and decisions are valid. \n- **Set Boundaries**: You might want to establish clearer boundaries in your conversations with this contact, particularly regarding decision-making.\n- **Seek Support**: Discussing your experiences with trusted friends or a mental health professional can provide additional perspectives and reinforce your self-esteem.\n\nIf you ever feel overwhelmed or unsure about your interactions, consider reaching out to a support network or a counselor for guidance.",
+  "tool_calls": [
+    {
+      "id": "call_WmnCy887HX2UWfus5QkyUanp",
+      "name": "analyze_all_users_with_user",
+      "args": "{}{\"vulnerability\": \"Low self-esteem\", \"selected_user_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\"}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    },
+    {
+      "id": "call_VnHbVNnOlvApapxOoCzU8SXk",
+      "name": "find_messages_with_technique_with_user",
+      "args": "{\"technique\": \"Denial\", \"selected_user_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\"}",
+      "result": "{\"technique\": \"Denial\", \"message_count\": 0, \"messages\": []}"
+    },
+    {
+      "id": "call_h0OwgbIzWb9dEOt1t0paMRNC",
+      "name": "find_messages_with_technique_with_user",
+      "args": "{\"technique\": \"Rationalization\", \"selected_user_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\"}",
+      "result": "{\"technique\": \"Rationalization\", \"message_count\": 2, \"messages\": [{\"message_id\": \"1ce7412d-8510-4e20-af90-6d4c2716d46e\", \"content\": \"I know what's best for you, just trust me and do what I say.\", \"timestamp\": \"2025-04-12T14:54:47.464535\", \"techniques\": [\"Playing Servant Role\", \"Playing Victim Role\", \"Rationalization\"], \"vulnerabilities\": [\"Dependency\", \"Naivete\"]}, {\"message_id\": \"7ca58c22-7e47-427d-a652-0760a5e5a3ee\", \"content\": \"I know what's best for you, just trust me and do what I say.\", \"timestamp\": \"2025-04-12T11:44:28.983921\", \"techniques\": [\"Playing Servant Role\", \"Playing Victim Role\", \"Rationalization\"], \"vulnerabilities\": [\"Dependency\", \"Naivete\"]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 3
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+Based on the analysis of your contact, **Test User 8b6vkm**, there are some concerning patterns indicating potential manipulation techniques that may contribute to self-doubt. Here are the key findings:
+
+### Manipulative Techniques Used:
+1. **Rationalization**: This technique was identified in two m...
+
+
+===== Test 4: 'Is someone being passive-aggressive with me?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Is someone being passive-aggressive with me?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Based on the analysis of your conversations, it seems that the primary individual communicating with you (Test User 8b6vkm) exhibits a notable level of manipulative behavior. Here are the key findings:\n\n- **Total Messages**: 10\n- **Manipulative Messages**: 6 (60% of the messages)\n  \n### Manipulative Techniques Used:\n1. **Persuasion or Seduction**: 2 messages\n2. **Playing Servant Role**: 2 messages\n3. **Playing Victim Role**: 2 messages\n4. **Rationalization**: 2 messages\n\n### Vulnerabilities Targeted:\n- **Dependency**: 6 messages (100% of manipulative messages)\n- **Naivete**: 4 messages (66.67% of manipulative messages)\n\n### Insights:\nThe presence of techniques like \"Playing Victim Role\" and \"Persuasion or Seduction\" may indicate a form of passive-aggressive communication. For example, if they often imply that you should feel sorry for them or try to charm you into agreeing with them, it can create a confusing emotional dynamic.\n\n### Recommendations:\n1. **Reflect on Conversations**: Consider specific instances where you felt unsure or uncomfortable. Did they use guilt or charm to influence your feelings or decisions?\n2. **Set Boundaries**: If you feel manipulated, it may help to establish clear boundaries in your communication.\n3. **Communicate Directly**: Address any concerns you have about their communication style directly, if you feel safe doing so.\n\nIf you'd like, I can also provide specific examples of manipulative messages if you think that would help clarify the situation further.",
+  "tool_calls": [
+    {
+      "id": "call_vRPSfBt9zpNXIibv5ZIfjxR8",
+      "name": "analyze_all_users_with_user",
+      "args": "{}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+Based on the analysis of your conversations, it seems that the primary individual communicating with you (Test User 8b6vkm) exhibits a notable level of manipulative behavior. Here are the key findings:
+
+- **Total Messages**: 10
+- **Manipulative Messages**: 6 (60% of the messages)
+  
+### Manipulative...
+
+
+===== Test 5: 'Has anyone been pressuring me to do things I don't want to?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Has anyone been pressuring me to do things I don't want to?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "It appears you have been experiencing some pressure in your conversations, particularly from a user identified as \"Test User 8b6vkm.\" Here's a summary of the manipulative communication patterns detected:\n\n### Manipulative Techniques Used:\n1. **Persuasion or Seduction**:\n   - **Messages**:\n     - \"If you don't do this for me right now, I'll make sure you regret it.\" (Repeated on two occasions)\n   - This indicates a form of pressure, suggesting that there will be negative consequences if you do not comply.\n\n2. **Playing Victim Role**:\n   - **Messages**:\n     - \"I know what's best for you, just trust me and do what I say.\" (Repeated on two occasions)\n   - This can create a sense of obligation, as it positions the sender as someone who knows better and implies that not following their advice may lead to disappointment.\n\n3. **Rationalization**:\n   - **Messages**:\n     - Same as above, where it is justified that their guidance is in your best interest.\n   - This often reinforces the manipulative nature of their requests by trying to make you feel that their demands are reasonable.\n\n### Targeted Vulnerabilities:\n- **Dependency**: The messages suggest an attempt to make you feel dependent on the other person for guidance or approval.\n- **Naivete**: There is an implication that you may not fully understand what is best for you without their help.\n\n### Advice for Responding:\n1. **Set Boundaries**: Clearly communicate your limits. You can say something like, \"I appreciate your concern, but I need to make my own decisions.\"\n2. **Seek Clarification**: If the messages are vague or coercive, ask for specific reasons behind their requests. This can help you gauge their intentions better.\n3. **Reflect on Your Needs**: Make sure to prioritize your own feelings and well-being over their demands.\n4. **Consider Support**: If the pressure continues or escalates, talking to a trusted friend or professional might be beneficial.\n\nIt's important to recognize these patterns and ensure that your choices are respected. If you feel overwhelmed, seeking external support can also be a helpful step.",
+  "tool_calls": [
+    {
+      "id": "call_u90MdeP3h951us37vWAreNUf",
+      "name": "analyze_all_users_with_user",
+      "args": "{}{\"technique\": \"Persuasion or Seduction\", \"selected_user_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\"}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    },
+    {
+      "id": "call_Wf5YdEbYNWWArdeqJvJ3R0So",
+      "name": "find_messages_with_technique_with_user",
+      "args": "{\"technique\": \"Playing Victim Role\", \"selected_user_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\"}",
+      "result": "{\"technique\": \"Playing Victim Role\", \"message_count\": 2, \"messages\": [{\"message_id\": \"1ce7412d-8510-4e20-af90-6d4c2716d46e\", \"content\": \"I know what's best for you, just trust me and do what I say.\", \"timestamp\": \"2025-04-12T14:54:47.464535\", \"techniques\": [\"Playing Servant Role\", \"Playing Victim Role\", \"Rationalization\"], \"vulnerabilities\": [\"Dependency\", \"Naivete\"]}, {\"message_id\": \"7ca58c22-7e47-427d-a652-0760a5e5a3ee\", \"content\": \"I know what's best for you, just trust me and do what I say.\", \"timestamp\": \"2025-04-12T11:44:28.983921\", \"techniques\": [\"Playing Servant Role\", \"Playing Victim Role\", \"Rationalization\"], \"vulnerabilities\": [\"Dependency\", \"Naivete\"]}]}"
+    },
+    {
+      "id": "call_sPomp87f42iSRL5cfcn6dAoY",
+      "name": "find_messages_with_technique_with_user",
+      "args": "{\"technique\": \"Rationalization\", \"selected_user_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\"}",
+      "result": "{\"technique\": \"Rationalization\", \"message_count\": 2, \"messages\": [{\"message_id\": \"1ce7412d-8510-4e20-af90-6d4c2716d46e\", \"content\": \"I know what's best for you, just trust me and do what I say.\", \"timestamp\": \"2025-04-12T14:54:47.464535\", \"techniques\": [\"Playing Servant Role\", \"Playing Victim Role\", \"Rationalization\"], \"vulnerabilities\": [\"Dependency\", \"Naivete\"]}, {\"message_id\": \"7ca58c22-7e47-427d-a652-0760a5e5a3ee\", \"content\": \"I know what's best for you, just trust me and do what I say.\", \"timestamp\": \"2025-04-12T11:44:28.983921\", \"techniques\": [\"Playing Servant Role\", \"Playing Victim Role\", \"Rationalization\"], \"vulnerabilities\": [\"Dependency\", \"Naivete\"]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 3
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+It appears you have been experiencing some pressure in your conversations, particularly from a user identified as "Test User 8b6vkm." Here's a summary of the manipulative communication patterns detected:
+
+### Manipulative Techniques Used:
+1. **Persuasion or Seduction**:
+   - **Messages**:
+     - "If...
+
+
+===== Test 6: 'Is someone playing mind games with me?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Is someone playing mind games with me?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "It looks like the person you're communicating with, identified as \"Test User 8b6vkm,\" has displayed a significant amount of manipulative behavior in your conversations. Here are some key insights:\n\n### Manipulation Techniques Used:\n1. **Persuasion or Seduction**: 2 occurrences (33.3%)\n2. **Playing Servant Role**: 2 occurrences (33.3%)\n3. **Playing Victim Role**: 2 occurrences (33.3%)\n4. **Rationalization**: 2 occurrences (33.3%)\n\n### Targeted Vulnerabilities:\n1. **Dependency**: This vulnerability was targeted in 6 messages (100%).\n2. **Naivete**: This vulnerability was targeted in 4 messages (66.7%).\n\n### Analysis\nThe high percentage of manipulative messages (60%) and the specific techniques indicate that this person might be engaging in mind games. The use of **Persuasion or Seduction** might suggest attempts to charm or influence you, while **Playing Victim Role** could be used to elicit sympathy or guilt. Additionally, the **Playing Servant Role** could hint at them positioning themselves as overly accommodating, potentially to control the dynamic of the relationship.\n\n### Advice\n- **Set Boundaries**: If you feel uncomfortable with their behavior, it\u2019s important to establish clear boundaries. Communicate what is acceptable to you.\n- **Trust Your Instincts**: Pay attention to how their messages make you feel. If you often feel confused or manipulated, it's essential to address it.\n- **Seek Clarity**: If you're unsure about their intentions, consider having an open conversation about how their messages affect you.\n\nIf you would like to explore specific messages or delve deeper into any of the manipulation techniques or vulnerabilities, just let me know!",
+  "tool_calls": [
+    {
+      "id": "call_yiK56bcMjj7elsPlxiaDqW9E",
+      "name": "analyze_all_users_with_user",
+      "args": "{}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+It looks like the person you're communicating with, identified as "Test User 8b6vkm," has displayed a significant amount of manipulative behavior in your conversations. Here are some key insights:
+
+### Manipulation Techniques Used:
+1. **Persuasion or Seduction**: 2 occurrences (33.3%)
+2. **Playing S...
+
+
+===== Test 7: 'Do any of my contacts criticize me unfairly?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Do any of my contacts criticize me unfairly?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "Your contact, **Test User 8b6vkm**, has demonstrated a significant level of manipulative communication in your conversations. Out of 10 messages exchanged, 6 of them were identified as manipulative, which constitutes a 60% manipulative rate.\n\n### Manipulation Techniques Used:\n1. **Persuasion or Seduction**: 2 messages (33.3%)\n2. **Playing Servant Role**: 2 messages (33.3%)\n3. **Playing Victim Role**: 2 messages (33.3%)\n4. **Rationalization**: 2 messages (33.3%)\n\n### Vulnerabilities Targeted:\n- **Dependency**: 6 instances (100% of manipulative messages)\n- **Naivete**: 4 instances (66.7% of manipulative messages)\n\n### Insights:\n- The use of **Playing Victim Role** suggests that this person may be trying to make you feel guilty or responsible for their feelings or situations.\n- **Rationalization** indicates that they might be justifying their behavior or expectations in a way that puts pressure on you.\n- Their appeals to **Dependency** suggest that they may be trying to create a dynamic where you feel obligated to meet their needs.\n\n### Advice:\nIf you feel that their criticisms are unfair or manipulative, consider setting clear boundaries in your communication. It's essential to express your feelings and concerns openly, and you might find it helpful to approach the conversation with a focus on how their messages impact you rather than accusing them directly. \n\nIf their behavior continues to make you uncomfortable, seeking support from trusted friends or a professional might provide you with additional perspectives and coping strategies.",
+  "tool_calls": [
+    {
+      "id": "call_YPQ9a0cKYqd68GqSAdeBf7qh",
+      "name": "analyze_all_users_with_user",
+      "args": "{\"max_users\":10}{\"selected_user_id\":\"249f0de2-390a-4549-a9f2-ddd2916fdfc9\",\"max_techniques\":5,\"max_vulnerabilities\":5}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+Your contact, **Test User 8b6vkm**, has demonstrated a significant level of manipulative communication in your conversations. Out of 10 messages exchanged, 6 of them were identified as manipulative, which constitutes a 60% manipulative rate.
+
+### Manipulation Techniques Used:
+1. **Persuasion or Sedu...
+
+
+===== Test 8: 'Is someone using emotional blackmail against me?' =====
+
+Sending request: {
+  "user_id": "0e2d25d3-ccee-4b84-9f97-172636348d5f",
+  "message": "Is someone using emotional blackmail against me?"
+}
+Status code: 200
+Response:
+{
+  "success": true,
+  "message": "Chat response generated successfully",
+  "text": "It appears that the user you are communicating with, identified as \"Test User 8b6vkm,\" has shown manipulative tendencies in your conversations. Here are some key insights:\n\n1. **Manipulative Techniques Used**:\n   - **Playing Victim Role**: This technique was used 2 times, indicating they may be trying to elicit sympathy or guilt from you.\n   - **Persuasion or Seduction**: This technique was also employed 2 times, which could suggest attempts to charm or pressure you into certain actions or feelings.\n   - **Playing Servant Role**: This was used 2 times as well, possibly indicating they are trying to appear overly helpful or submissive to gain your trust or control.\n   - **Rationalization**: This technique was used 2 times, suggesting they may justify certain behaviors or demands in a way that may manipulate your understanding.\n\n2. **Targeted Vulnerabilities**:\n   - **Dependency**: This vulnerability was targeted in 6 instances, meaning they may be trying to create or exploit a sense of reliance on them.\n   - **Naivete**: This was targeted 4 times, possibly implying they are taking advantage of your trusting nature.\n\nGiven this information, there are signs that emotional blackmail may be occurring in your interactions. The use of the \"Playing Victim Role\" technique, combined with the targeting of your sense of dependency, aligns with common patterns seen in emotional manipulation.\n\n### Advice:\n- **Set Boundaries**: It\u2019s important to establish clear boundaries in your communication. Make sure to express what is acceptable and what is not.\n- **Reflect on Your Feelings**: Pay attention to how their messages make you feel. If you often feel guilty or pressured after conversations, this could be a strong signal of manipulation.\n- **Seek Support**: If you're feeling overwhelmed, consider talking to someone you trust or a professional about your experiences.\n\nIf you'd like, I can also look for specific messages that illustrate these manipulative techniques. Would you like me to do that?",
+  "tool_calls": [
+    {
+      "id": "call_xydI5OdASGZwkvcLcPdYHzMI",
+      "name": "analyze_all_users_with_user",
+      "args": "{}",
+      "result": "{\"user_count\": 1, \"users\": [{\"person_id\": \"249f0de2-390a-4549-a9f2-ddd2916fdfc9\", \"person_name\": \"Test User 8b6vkm\", \"total_messages\": 10, \"manipulative_count\": 6, \"manipulative_percentage\": 0.6, \"techniques\": [{\"name\": \"Persuasion or Seduction\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Servant Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Playing Victim Role\", \"count\": 2, \"percentage\": 0.3333333333333333}, {\"name\": \"Rationalization\", \"count\": 2, \"percentage\": 0.3333333333333333}], \"vulnerabilities\": [{\"name\": \"Dependency\", \"count\": 6, \"percentage\": 1.0}, {\"name\": \"Naivete\", \"count\": 4, \"percentage\": 0.6666666666666666}]}]}"
+    }
+  ]
+}
+
+✅ Tool calls made: 1
+First tool used: analyze_all_users_with_user
+
+Techniques detected:
+  - Persuasion or Seduction
+  - Playing Servant Role
+  - Playing Victim Role
+  - Rationalization
+
+Vulnerabilities targeted:
+  - Dependency
+  - Naivete
+
+Response text preview:
+It appears that the user you are communicating with, identified as "Test User 8b6vkm," has shown manipulative tendencies in your conversations. Here are some key insights:
+
+1. **Manipulative Techniques Used**:
+   - **Playing Victim Role**: This technique was used 2 times, indicating they may be tryi...
