@@ -122,6 +122,7 @@ white-mirror/
 
 6. **Start the backend server**
     ```bash
+    sh setup.sh
     uvicorn app.main:app --reload
     ```
 

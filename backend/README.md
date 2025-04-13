@@ -200,6 +200,7 @@ pip install -r requirements.txt
 alembic upgrade head
 
 # Start server
+sh setup.sh
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
